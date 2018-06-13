@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: fwmf-web
+  profiles:
+    active: dev
+logging:
+  level:
+    ROOT: error
+    cn.faury: debug

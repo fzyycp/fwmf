@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cn.faury.fwmf</groupId>
+	<artifactId>fwmf-web</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+
+	<name>fwmf-web</name>
+	<description>后台管理系统</description>
+
+	<parent>
+		<groupId>cn.faury</groupId>
+		<artifactId>fwmf</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<properties>
+        <fdk.common.version>0.0.7</fdk.common.version>
+		<fwmf.module.user.role.spring.boot.starter.version>0.0.1</fwmf.module.user.role.spring.boot.starter.version>
+		<fwmf.shiro.repository.mongodb.spring.boot.starter.version>0.0.1</fwmf.shiro.repository.mongodb.spring.boot.starter.version>
+	</properties>
+
+	<dependencies>
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-common</artifactId>
+            <version>${fdk.common.version}</version>
+        </dependency>
+		<dependency>
+			<groupId>cn.faury.fwmf.module</groupId>
+			<artifactId>fwmf-module-user-role-spring-boot-starter</artifactId>
+			<version>${fwmf.module.user.role.spring.boot.starter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.faury.fdk</groupId>
+			<artifactId>fdk-shiro-repository-mongodb-spring-boot-starter</artifactId>
+			<version>${fwmf.shiro.repository.mongodb.spring.boot.starter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ulisesbocchio</groupId>
+			<artifactId>jasypt-spring-boot-starter</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+	</dependencies>
+
+</project>
