@@ -1,4 +1,4 @@
-package cn.faury.fwmf.web.config;
+package cn.faury.fwmf.master.config;
 
 import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.entry.RestResultEntry;

@@ -12,7 +12,7 @@ const RadioGroup = Radio.Group;
 
 export function config() {
   return {
-    DOMAIN: 'http://127.0.0.1:15080/fwmf-gateway',
+    DOMAIN: 'http://127.0.0.1:15080/fwmf-master',
   };
 }
 

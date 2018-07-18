@@ -1,5 +1,5 @@
 server:
-  port: 15080
+  port: 15081
   servlet:
     context-path: /fwmf-gateway
 

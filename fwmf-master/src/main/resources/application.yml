@@ -1,6 +1,6 @@
 spring:
   application:
-    name: fwmf-web
+    name: fwmf-master
   profiles:
     active: dev
 logging:

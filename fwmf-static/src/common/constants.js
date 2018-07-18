@@ -9,4 +9,4 @@ export const formItemLayout = {
   labelCol: {span: 5},
   wrapperCol: {span: 15},
 };
-export const DOMAIN = 'http://127.0.0.1:15080/fwmf-gateway';
+export const DOMAIN = 'http://127.0.0.1:15080/fwmf-master';

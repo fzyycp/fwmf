@@ -12,11 +12,12 @@
     <groupId>cn.faury.fwmf</groupId>
     <artifactId>fwmf-gateway</artifactId>
     <version>0.0.1</version>
-    <description>接口网关系统</description>
+    <description>移动端接口网关系统</description>
 
     <properties>
         <fdk.mobile.spring.boot.starter.version>0.0.1</fdk.mobile.spring.boot.starter.version>
         <fwmf.shiro.repository.mongodb.spring.boot.starter.version>0.0.1</fwmf.shiro.repository.mongodb.spring.boot.starter.version>
+        <fwmf.module.system.spring.boot.starter.version>0.0.1</fwmf.module.system.spring.boot.starter.version>
     </properties>
 
     <dependencies>
@@ -34,7 +35,7 @@
         <dependency>
             <groupId>cn.faury.fwmf.module</groupId>
             <artifactId>fwmf-module-system-spring-boot-starter</artifactId>
-            <version>0.0.1</version>
+            <version>${fwmf.module.system.spring.boot.starter.version}</version>
         </dependency>
         <!--应用服务依赖-->
 

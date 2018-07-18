@@ -1,11 +1,11 @@
 server:
-  port: 15082
+  port: 15080
   servlet:
-    context-path: /fwmf-web
+    context-path: /fwmf-master
 
 fdk:
   shiro:
-    saCode: "fwmf-web"
+    saCode: "fwmf-master"
     session-timeout: 900000
     filter:
 #登录、登录成功页为系统默认URL，相同时不出现302跳转

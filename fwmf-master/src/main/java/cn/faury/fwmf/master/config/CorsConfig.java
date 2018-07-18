@@ -1,4 +1,4 @@
-package cn.faury.fwmf.web.config;
+package cn.faury.fwmf.master.config;
 
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -13,22 +13,6 @@ import org.springframework.web.filter.CorsFilter;
  */
 @Configuration
 public class CorsConfig {
-//
-//    @Bean
-//    public CorsFilter corsFilter() {
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        CorsConfiguration corsConfiguration = new CorsConfiguration();
-//        corsConfiguration.setAllowCredentials(true);
-//        corsConfiguration.addAllowedOrigin("*");
-//        corsConfiguration.addAllowedHeader("*");
-//        corsConfiguration.addAllowedMethod("*");
-//        source.registerCorsConfiguration("/**", corsConfiguration);
-//
-//        return new CorsFilter(source);
-////        FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
-////        bean.setOrder(0);
-////        return bean;
-//    }
 
     @Bean
     public FilterRegistrationBean corsFilter() {

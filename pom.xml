@@ -19,8 +19,8 @@
     </parent>
 
     <modules>
-        <module>fwmf-web</module>
         <module>fwmf-gateway</module>
+        <module>fwmf-master</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

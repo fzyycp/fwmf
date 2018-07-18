@@ -1,4 +1,4 @@
-package cn.faury.fwmf.web.config;
+package cn.faury.fwmf.master.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +28,7 @@ public class SwaggerConfig {
     }
     private ApiInfo getApiInfo() {
         return new ApiInfoBuilder()
-                .title("fwmf-web微服务接口")
+                .title("fwmf-master微服务接口")
                 .description("后台Rest请求微服务接口定义说明")
                 .version("1.0")
                 .build();
