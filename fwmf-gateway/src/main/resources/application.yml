@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: fwmf-gateway
+  profiles:
+    active: dev
+logging:
+  level:
+    ROOT: error
+    cn.faury: debug
+  path: D:\logs\15080\fwmf-gateway
+  register-shutdown-hook: true

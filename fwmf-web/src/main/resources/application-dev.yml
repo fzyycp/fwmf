@@ -1,5 +1,5 @@
 server:
-  port: 15081
+  port: 15082
   servlet:
     context-path: /fwmf-web
 
@@ -14,10 +14,12 @@ fdk:
 #      unauthorized-url: "/login"
       chain:
 #登录、退出、验证码为系统默认，如果修改了上面的filter则在此处重新配置
-       - "captcha,login:/login"
+#       - "captcha,login:/login"
 #       - "logout:/logout"
 #       - "anon:/captcha.jpg"
        - "anon:/static/**"
+       - "anon:/html/**"
+       - "anon:/web/**"
        - "anon:/v2/api-docs/**"
        - "anon:/swagger-resources/**"
        - "anon:/webjars/springfox-swagger-ui/**"
@@ -35,7 +37,7 @@ fdk:
         coll-name: "FwmfColl" #Session所用Collection名称
 #验证码配置，默认基本满足
   captcha:
-    enable: true #是否启用
+    enable: false #是否启用
 #    request-name: "captchaCode" #前端传入的参数名
 #    border: "yes" #是否有边框
 #    borderColor: "105,179,90" #边框颜色
