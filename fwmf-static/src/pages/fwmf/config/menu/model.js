@@ -5,20 +5,18 @@ export default {
   state: {},
   effects: {
     * getSystemMenuTree({payload}, {call, put, select}) {
-      const response = yield call(getSystemMenuTree, payload);
+      const result = yield call(getSystemMenuTree, payload);
       yield put({
         type: 'saveMenuTree',
         payload,
-        response,
+        data: result.data,
       });
     },
   },
   reducers: {
     saveMenuTree(state, action) {
-      if(action.response && action.response.code === '200'){
-        if(action.payload && 'root' === action.payload.nodeType){
-          state.systems = action.response.data;
-        }
+      if (action.payload && 'root' === action.payload.nodeType) {
+        state.systems = action.data;
       }
     },
   },

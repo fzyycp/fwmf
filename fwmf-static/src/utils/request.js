@@ -1,5 +1,5 @@
 import fetch from 'dva/fetch';
-import { notification } from 'antd';
+import {message, notification} from 'antd';
 import router from 'umi/router';
 
 const codeMessage = {
@@ -19,13 +19,15 @@ const codeMessage = {
   503: '服务不可用，服务器暂时过载或维护。',
   504: '网关超时。',
 };
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
   const errortext = codeMessage[response.status] || response.statusText;
+
   notification.error({
-    message: `请求错误 ${response.status}: ${response.url}`,
+    message: `请求错误 ${response.status}`,
     description: errortext,
   });
   const error = new Error(errortext);
@@ -44,8 +46,11 @@ function checkStatus(response) {
 export default function request(url, options) {
   const defaultOptions = {
     credentials: 'include',
+    headers: {
+      fdkauthorization: '1dfdddf3-81f3-4115-9b80-dbdb4700beb5',
+    },
   };
-  const newOptions = { ...defaultOptions, ...options };
+  const newOptions = {...defaultOptions, ...options};
   if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
     if (!(newOptions.body instanceof FormData)) {
       newOptions.headers = {
@@ -71,6 +76,25 @@ export default function request(url, options) {
       }
       return response.json();
     })
+    .then((result) => {
+      switch (result.code) {
+        case '200':
+          break;
+        case '401':
+          message.error('当前会话已超时，请重新登录');
+          // window.location.href = '/login';
+          break;
+        case '500':
+        case '404':
+        case '406':
+          message.error(result.message);
+          break;
+        default:
+          message.error(result.message);
+          break;
+      }
+      return result;
+    })
     .catch((e) => {
       const status = e.name;
       if (status === 401) {
@@ -84,11 +108,13 @@ export default function request(url, options) {
         return;
       }
       if (status <= 504 && status >= 500) {
-        router.push('/500');
+        // router.push('/500');
+        message.error(codeMessage[status]);
         return;
       }
       if (status >= 404 && status < 422) {
-        router.push('/404');
+        message.error(codeMessage[status]);
+        // router.push('/404');
         return;
       }
     });

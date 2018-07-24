@@ -6,7 +6,7 @@ server:
 fdk:
   mobile:
     app-code: jl-yexs
-    session-timeout: 86400
+    session-timeout: 86400000
     oauth:
       cfgs: #APP编码.appid.secret,APP编码.appid.secret
 #        weixin: "jl-yexs.wxbe1ae55c516d7730.4bade84b123a563a2799b7e22d8ee2a4"
@@ -19,7 +19,7 @@ fdk:
       anon: /api/*,/web/*
   shiro:
     saCode: "fwmf-gateway"
-    session-timeout: 900000
+    session-timeout: 86400000
     filter:
 #登录、登录成功页为系统默认URL，相同时不出现302跳转
 #      login-url: "/login"

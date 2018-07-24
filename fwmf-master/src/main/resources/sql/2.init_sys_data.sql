@@ -1,7 +1,7 @@
 -- 业务系统信息数据
 DELETE FROM `sys_t_system_info`;
 INSERT INTO `sys_t_system_info` (`SYSTEM_ID`, `SYSTEM_CODE`, `SYSTEM_NAME`, `IS_AVAILABLE`) VALUES
-  ('1', 'fwmf-web', '后台管理系统', '1')
+  ('1', 'fwmf-master', '后台管理系统', '1')
   ,('2', 'fwmf-mobile', '接入网关', '1')
   ,('3', 'fwmf-runtime', '后台服务系统', '1')
   ;

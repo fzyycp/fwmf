@@ -1,9 +1,8 @@
 import { stringify } from 'qs';
 import request from 'utils/request';
-import {config} from 'src/utils/utils';
 
-export async function queryProjectNotice() {
-  return request('/api/project/notice');
+export async function logout() {
+  return request('/logout');
 }
 
 export async function queryActivities() {
@@ -77,13 +76,4 @@ export async function fakeRegister(params) {
 
 export async function queryNotices() {
   return request('/api/notices');
-}
-
-export async function querySystem(params) {
-  return request(`${config().DOMAIN}/api/system/querySystem?${stringify(params)}`);
-}
-export async function addSystem(params) {
-  return request(`${config().DOMAIN}/api/system/addSystem?${stringify(params)}`, {
-    method: 'POST',
-  });
 }

@@ -1,26 +1,19 @@
 import React, {PureComponent, Fragment} from 'react';
 import {connect} from 'dva';
 import {
-  Card,
   Tree,
   Layout,
-  Icon,
   Divider,
   Button,
-  Table,
   Popconfirm,
 } from 'antd';
 import PageHeaderLayout from 'src/layouts/PageHeaderLayout';
 import {isAvailableListRender} from 'src/utils/utils'
-import {PAGE_SIZE, PAGE_SIZE_OPTIONS, DOMAIN} from 'src/common/constants'
+import {PAGE_SIZE, PAGE_SIZE_OPTIONS} from 'src/common/constants'
 import styles from './Menu.less';
 
 const TreeNode = Tree.TreeNode;
-const {Header, Content, Footer, Sider} = Layout;
-const getValue = obj =>
-  Object.keys(obj)
-    .map(key => obj[key])
-    .join(',');
+const {Content, Sider} = Layout;
 
 class Menu extends PureComponent {
 
@@ -55,14 +48,14 @@ class Menu extends PureComponent {
         title: '操作',
         align: 'center',
         render: (text, record, index) => (<Fragment>
-          <a href="#">修改</a>
+          <a>修改</a>
           <Divider type="vertical"/>
-          <a href="#">查看</a>
+          <a>查看</a>
           <Divider type="vertical"/>
-          <a href="#">删除</a>
+          <a>删除</a>
           <Divider type="vertical"/>
           <Popconfirm title="是否确认禁用?" onConfirm={this.changeMenuAvailable.bind(null, record)}>
-            <a href="#">{'Y' === record.isAvailable ? '禁用' : '启用'}</a>
+            <a>{'Y' === record.isAvailable ? '禁用' : '启用'}</a>
           </Popconfirm>
 
         </Fragment>),
@@ -114,22 +107,10 @@ class Menu extends PureComponent {
   }
 
   render() {
-    const {pageNum, list, total, loading} = this.props;
-
-    const paginationProps = {
-      current: pageNum,
-      showSizeChanger: true,
-      showQuickJumper: true,
-      total: total,
-      pageSizeOptions: PAGE_SIZE_OPTIONS,
-      showTotal: (total) => `共 ${total} 条记录`,
-    };
-
-    const {ftable} = this.state;
     const systemTree = this.state.systems.map(item=>{
       return (<TreeNode title={item.systemName} key={item.systemId}></TreeNode>);
     });
-console.log(systemTree);
+
     return (
       <PageHeaderLayout title="">
         <Layout style={{background: '#fff'}}>

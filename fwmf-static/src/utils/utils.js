@@ -5,16 +5,10 @@ import {
   Form,
   Radio,
 } from 'antd';
-
+import {formItemLayout} from 'src/common/constants'
 const FormItem = Form.Item;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
-
-export function config() {
-  return {
-    DOMAIN: 'http://127.0.0.1:15080/fwmf-master',
-  };
-}
 
 export function fixedZero(val) {
   return val * 1 < 10 ? `0${val}` : val;
@@ -203,7 +197,7 @@ export function isAvailableListRender(val) {
 
 // isAvailable在Form中显示
 export function isAvailableFormItem(form, defaultValue = 'Y') {
-  return (<FormItem labelCol={{span: 5}} wrapperCol={{span: 15}} label="是否可用">
+  return (<FormItem {...formItemLayout} label="是否可用">
     {form.getFieldDecorator('isAvailable', {
       initialValue: defaultValue,
     })(<RadioGroup>

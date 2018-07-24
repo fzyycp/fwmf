@@ -6,7 +6,7 @@ server:
 fdk:
   shiro:
     saCode: "fwmf-master"
-    session-timeout: 900000
+    session-timeout: 86400000
     filter:
 #登录、登录成功页为系统默认URL，相同时不出现302跳转
 #      login-url: "/login"
@@ -17,9 +17,6 @@ fdk:
 #       - "captcha,login:/login"
 #       - "logout:/logout"
 #       - "anon:/captcha.jpg"
-       - "anon:/static/**"
-       - "anon:/html/**"
-       - "anon:/web/**"
        - "anon:/v2/api-docs/**"
        - "anon:/swagger-resources/**"
        - "anon:/webjars/springfox-swagger-ui/**"
@@ -33,8 +30,8 @@ fdk:
         host: "128.0.9.252" #服务器地址
         username: "" #登录名
         password: "" #登录密码
-        db-name: "FwmfDb" #Session所用DB名称
-        coll-name: "FwmfColl" #Session所用Collection名称
+        db-name: "EbDevSessionDb" #Session所用DB名称
+        coll-name: "EbDevSessionColl" #Session所用Collection名称
 #验证码配置，默认基本满足
   captcha:
     enable: false #是否启用
@@ -66,7 +63,6 @@ jasypt:
 #mybatis
 #entity扫描的包名
 mybatis:
-  type-aliases-package: cn.faury
   mapper-locations: classpath*:/mybaits/*Mapper.xml  #Mapper.xml所在的位置
 
 #pagehelper分页插件配置

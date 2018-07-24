@@ -1,13 +1,6 @@
 import { resolve } from 'path';
 
 export default {
-  // proxy: {
-  //   '/api': {
-  //     target: 'http://jsonplaceholder.typicode.com/',
-  //     changeOrigin: true,
-  //     pathRewrite: { '^/api': '' },
-  //   },
-  // },
   alias: {
     src: resolve(__dirname, 'src'),
     assets: resolve(__dirname, 'src/assets'),
@@ -21,4 +14,5 @@ export default {
     utils: resolve(__dirname, 'src/utils'),
   },
   ignoreMomentLocale: true,
+  publicPath: '/eb-manager/master/static/',
 };

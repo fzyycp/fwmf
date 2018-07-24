@@ -6,7 +6,7 @@
   "scripts": {
     "start-umi": "umi dev",
     "start": "cross-env COMPILE_ON_DEMAND=none HARD_SOURCE=1 umi dev",
-    "build": "umi build",
+    "build": "cross-env BASE_URL=/eb-manager/master/ umi build",
     "generate": "plop --plopfile internals/generators/index.js",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint",

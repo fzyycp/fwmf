@@ -16,12 +16,15 @@
 
     <properties>
         <fdk.common.version>0.0.9</fdk.common.version>
+        <fdk.shiro.repository.mongodb.spring.boot.starter.version>0.0.1</fdk.shiro.repository.mongodb.spring.boot.starter.version>
+        <fdk.shiro.spring.boot.starter.version>0.0.1</fdk.shiro.spring.boot.starter.version>
         <fwmf.module.user.role.spring.boot.starter.version>0.0.1</fwmf.module.user.role.spring.boot.starter.version>
-        <fwmf.shiro.repository.mongodb.spring.boot.starter.version>0.0.1</fwmf.shiro.repository.mongodb.spring.boot.starter.version>
         <fwmf.module.system.spring.boot.starter.version>0.0.1</fwmf.module.system.spring.boot.starter.version>
         <fwmf.module.system.web.version>0.0.1</fwmf.module.system.web.version>
         <fwmf.module.menu.spring.boot.starter.version>0.0.1</fwmf.module.menu.spring.boot.starter.version>
         <fwmf.module.menu.web.version>0.0.1</fwmf.module.menu.web.version>
+        <fwmf.module.shop.spring.boot.starter.version>0.0.1</fwmf.module.shop.spring.boot.starter.version>
+        <fwmf.module.shop.web.version>0.0.1</fwmf.module.shop.web.version>
 
     </properties>
 
@@ -33,14 +36,19 @@
             <version>${fdk.common.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.faury.fwmf.module</groupId>
-            <artifactId>fwmf-module-user-role-spring-boot-starter</artifactId>
-            <version>${fwmf.module.user.role.spring.boot.starter.version}</version>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-shiro-repository-mongodb-spring-boot-starter</artifactId>
+            <version>${fdk.shiro.repository.mongodb.spring.boot.starter.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>
-            <artifactId>fdk-shiro-repository-mongodb-spring-boot-starter</artifactId>
-            <version>${fwmf.shiro.repository.mongodb.spring.boot.starter.version}</version>
+            <artifactId>fdk-shiro-spring-boot-starter</artifactId>
+            <version>${fdk.shiro.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-user-role-spring-boot-starter</artifactId>
+            <version>${fwmf.module.user.role.spring.boot.starter.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -87,6 +95,17 @@
             <groupId>cn.faury.fwmf.module</groupId>
             <artifactId>fwmf-module-menu-web</artifactId>
             <version>${fwmf.module.menu.web.version}</version>
+        </dependency>
+        <!--商店信息管理-->
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-shop-spring-boot-starter</artifactId>
+            <version>${fwmf.module.shop.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-shop-web</artifactId>
+            <version>${fwmf.module.shop.web.version}</version>
         </dependency>
 
     </dependencies>

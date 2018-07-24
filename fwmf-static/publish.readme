@@ -1,0 +1,4 @@
+1，修改发布后的静态资源访问路径
+  【package.json】：修改build环境变量 BASE_URL 值，打包后路由的前缀
+  【.webpackrc.js】：修改 publicPath 变量值，打包后静态资源文件的访问前缀
+  【constants.js】：修改DOMAIN常量，请求后台rest接口地址

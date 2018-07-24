@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import { Modal } from 'antd';
+import merge from 'lodash/merge';
 
-class DetailModal extends Component {
+class FDetailModal extends Component {
 
   constructor(props) {
     super(props);
@@ -15,9 +16,8 @@ class DetailModal extends Component {
   }
 
   showModalHandler = (e) => {
-    if (e){
-      e.stopPropagation();
-    }
+    e && e.stopPropagation();
+
     this.setState({
       visible: true,
     });
@@ -39,24 +39,31 @@ class DetailModal extends Component {
     });
   };
 
+  configModal(){
+    return {};
+  }
+
   renderForm() {
     return (<div>please init your form</div>);
   };
 
   render() {
     const { children,title } = this.props;
+    const modalProps = merge({},this.configModal(),{
+      title,
+      keyboard: false,
+      maskClosable: false,
+      visible:this.state.visible,
+      onOk:this.okHandler,
+      onCancel:this.hideModalHandler,
+    });
 
     return (
       <span>
         <span onClick={this.showModalHandler}>
           { children }
         </span>
-        <Modal
-          title={title}
-          visible={this.state.visible}
-          onOk={this.okHandler}
-          onCancel={this.hideModalHandler}
-        >
+        <Modal {...modalProps} >
           {this.renderForm()}
         </Modal>
       </span>
@@ -64,4 +71,4 @@ class DetailModal extends Component {
   }
 }
 
-export default DetailModal;
+export default FDetailModal;

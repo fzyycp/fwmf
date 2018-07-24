@@ -3,7 +3,7 @@ import { isUrl } from 'utils/utils';
 const menuData = [{
   name: '基础配置',
   icon: 'setting',
-  path: 'fwmf',
+  path: 'fwmf/config',
   children: [
     {
       name: '系统信息',
@@ -14,6 +14,18 @@ const menuData = [{
     {
       name: '菜单管理',
       path: 'menu',
+      // hideInBreadcrumb: true,
+      // hideInMenu: true,
+    },
+  ],
+},{
+  name: '数据配置',
+  icon: 'setting',
+  path: 'fwmf/data',
+  children: [
+    {
+      name: '商店管理',
+      path: 'shop',
       // hideInBreadcrumb: true,
       // hideInMenu: true,
     },

@@ -20,7 +20,7 @@ export default {
       const response = yield call(queryCurrent);
       yield put({
         type: 'saveCurrentUser',
-        payload: response,
+        response,
       });
     },
   },
@@ -30,7 +30,7 @@ export default {
       state.list = action.payload;
     },
     saveCurrentUser(state, action) {
-      state.currentUser = action.payload;
+      state.currentUser = action.response.data[0];
     },
     changeNotifyCount(state, action) {
       state.currentUser.notifyCount = action.payload;

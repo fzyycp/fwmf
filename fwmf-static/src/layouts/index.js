@@ -1,5 +1,4 @@
 import React from 'react';
-import pathToRegexp from 'path-to-regexp';
 import { IntlProvider } from 'react-intl';
 import withRouter from 'umi/withRouter';
 import dynamic from 'umi/dynamic';
@@ -10,8 +9,7 @@ import zhCN from 'antd/lib/locale-provider/zh_CN';
 // Import i18n messages
 import { translationMessages } from 'src/i18n';
 
-import BasicLayout from 'layouts/BasicLayout';
-import UserLayout from 'layouts/UserLayout';
+import MasterLayout from 'layouts/MasterLayout';
 
 function mapStateToProps({ global }) {
   return {
@@ -21,14 +19,6 @@ function mapStateToProps({ global }) {
 
 const app = (messages) => withRouter(
   connect(mapStateToProps)(({ children, location, locale }) => {
-    const { pathname } = location;
-    let LayoutComponent = BasicLayout;
-    if (pathToRegexp('/user(.*)').test(pathname)) {
-      LayoutComponent = UserLayout;
-    } else {
-      LayoutComponent = BasicLayout;
-    }
-
     return (
       <IntlProvider
         locale={locale}
@@ -36,7 +26,7 @@ const app = (messages) => withRouter(
         messages={messages[locale]}
       >
         <LocaleProvider locale={locale === 'zh' ? zhCN : {}}>
-          <LayoutComponent location={location}>{children}</LayoutComponent>
+          <MasterLayout location={location}>{children}</MasterLayout>
         </LocaleProvider>
       </IntlProvider>
     );
