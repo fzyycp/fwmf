@@ -47,7 +47,7 @@ export default function request(url, options) {
   const defaultOptions = {
     credentials: 'include',
     headers: {
-      fdkauthorization: '1dfdddf3-81f3-4115-9b80-dbdb4700beb5',
+      fdkauthorization: window.sessionStorage.getItem('S') || '',
     },
   };
   const newOptions = {...defaultOptions, ...options};

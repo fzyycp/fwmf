@@ -48,10 +48,13 @@ fdk:
 # 数据源配置
 spring:
   datasource:
-    url: ENC(JZkH5bu2/qQpVokeEyZbsmZ0bFuuBzlUnm7e54uKRJxbx2Ue9dW0kYvdY3y1JOXiWUqJGDNRiNfpUj8QzVl1KWMtXYmR8uAlUV0FB0hZ7sY=)
+    url: jdbc:mysql://128.0.9.252:3306/eb
+    username: root
+    password: 888888
+#    url: ENC(JZkH5bu2/qQpVokeEyZbsmZ0bFuuBzlUnm7e54uKRJxbx2Ue9dW0kYvdY3y1JOXiWUqJGDNRiNfpUj8QzVl1KWMtXYmR8uAlUV0FB0hZ7sY=)
     driver-class-name: com.mysql.jdbc.Driver
-    username: ENC(UypceX2kJe2m+qvQceaxmQ==)
-    password: ENC(4GZuSC68OLkKDcOOPU148MS7K/t8Looh)
+#    username: ENC(UypceX2kJe2m+qvQceaxmQ==)
+#    password: ENC(4GZuSC68OLkKDcOOPU148MS7K/t8Looh)
 #    type: org.apache.commons.dbcp2.BasicDataSource     #连接池配置
     type: com.zaxxer.hikari.HikariDataSource  #连接池配置
 
