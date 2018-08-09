@@ -18,6 +18,12 @@
         <fdk.mobile.spring.boot.starter.version>0.0.1</fdk.mobile.spring.boot.starter.version>
         <fwmf.shiro.repository.mongodb.spring.boot.starter.version>0.0.1</fwmf.shiro.repository.mongodb.spring.boot.starter.version>
         <fwmf.module.system.spring.boot.starter.version>0.0.1</fwmf.module.system.spring.boot.starter.version>
+        <fwmf.module.area.spring.boot.starter.version>0.0.1</fwmf.module.area.spring.boot.starter.version>
+        <fwmf.module.app.spring.boot.starter.version>0.0.1</fwmf.module.app.spring.boot.starter.version>
+        <fwmf.module.appversion.spring.boot.starter.version>0.0.1</fwmf.module.appversion.spring.boot.starter.version>
+        <fwmf.module.apptester.spring.boot.starter.version>0.0.1</fwmf.module.apptester.spring.boot.starter.version>
+        <fwmf.module.systemconfig.spring.boot.starter.version>0.0.1</fwmf.module.systemconfig.spring.boot.starter.version>
+        <fwmf.module.school.spring.boot.starter.version>0.0.1</fwmf.module.school.spring.boot.starter.version>
     </properties>
 
     <dependencies>
@@ -38,7 +44,36 @@
             <version>${fwmf.module.system.spring.boot.starter.version}</version>
         </dependency>
         <!--应用服务依赖-->
-
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-area-spring-boot-starter</artifactId>
+            <version>${fwmf.module.area.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-app-spring-boot-starter</artifactId>
+            <version>${fwmf.module.app.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-appversion-spring-boot-starter</artifactId>
+            <version>${fwmf.module.appversion.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-systemconfig-spring-boot-starter</artifactId>
+            <version>${fwmf.module.systemconfig.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-apptester-spring-boot-starter</artifactId>
+            <version>${fwmf.module.apptester.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-school-spring-boot-starter</artifactId>
+            <version>${fwmf.module.school.spring.boot.starter.version}</version>
+        </dependency>
 
         <!--springboot基础依赖-->
         <dependency>
@@ -67,6 +102,11 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

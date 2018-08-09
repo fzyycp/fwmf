@@ -28,8 +28,8 @@ public class SwaggerConfig {
     }
     private ApiInfo getApiInfo() {
         return new ApiInfoBuilder()
-                .title("fwmf-web微服务接口")
-                .description("后台Rest请求微服务接口定义说明")
+                .title("微服务接口")
+                .description("手机端借口请求微服务接口定义说明")
                 .version("1.0")
                 .build();
     }

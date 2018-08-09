@@ -5,7 +5,7 @@ server:
 
 fdk:
   shiro:
-    saCode: "fwmf-master"
+    saCode: "eb-manager"
     session-timeout: 86400000
     filter:
 #登录、登录成功页为系统默认URL，相同时不出现302跳转

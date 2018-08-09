@@ -25,6 +25,8 @@
         <fwmf.module.menu.web.version>0.0.1</fwmf.module.menu.web.version>
         <fwmf.module.shop.spring.boot.starter.version>0.0.1</fwmf.module.shop.spring.boot.starter.version>
         <fwmf.module.shop.web.version>0.0.1</fwmf.module.shop.web.version>
+        <fwmf.module.area.spring.boot.starter.version>0.0.1</fwmf.module.area.spring.boot.starter.version>
+        <fwmf.module.area.web.version>0.0.1</fwmf.module.area.web.version>
 
     </properties>
 
