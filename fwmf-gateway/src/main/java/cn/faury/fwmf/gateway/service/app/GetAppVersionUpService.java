@@ -91,15 +91,15 @@ public class GetAppVersionUpService implements IMobileService {
 
         String maxVersionNum = appVersionservice.getMaxVersionNum(appCode, sysType, isTester);
 
-        Map<String, Object> parm = new HashMap<String, Object>();
-        List<Object> list = new ArrayList<Object>();
+        Map<String, Object> parm = new HashMap<>();
+        List<Object> list = new ArrayList<>();
         // 后台返回的版本号大，则需要版本更新
         if (VersionUtil.compareVersionNo(maxVersionNum, versionNum)>0) {
             parm.put("isUpdate", true);
             AppVersionBean bean = appVersionservice.getAppVersion(appCode, sysType, maxVersionNum);
             if (bean != null) {
-                parm.put("isCoercion", "1".equals(bean.getIsCoercion()));
-                parm.put("isFormal", "1".equals(bean.getIsFormal()));
+                parm.put("isCoercion", StringUtil.whetherYes(bean.getIsCoercion()));
+                parm.put("isFormal", StringUtil.whetherYes(bean.getIsFormal()));
                 parm.put("versionNum", bean.getVersionNum());
                 parm.put("size", bean.getSize());
                 if (sysType.equals(AppOsType.IOSCN.getValue()) || sysType.equals(AppOsType.IOSEN.getValue())) {

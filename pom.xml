@@ -28,20 +28,38 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <repositories>
-        <!-- Nexus私服 -->
-        <repository>
-            <id>nexus</id>
-            <name>Team Nexus Repository</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </repository>
         <!-- fdk私服 -->
         <repository>
             <id>fdk</id>
             <name>FDK Repository</name>
             <url>https://dl.bintray.com/faury/fdk</url>
         </repository>
+        <!-- fwmf私服 -->
+        <repository>
+            <id>fwmf</id>
+            <name>FWMF Repository</name>
+            <url>https://dl.bintray.com/faury/fwmf-module</url>
+        </repository>
+        <!-- Nexus私服 -->
+        <repository>
+            <id>nexus</id>
+            <name>Team Nexus Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
     </repositories>
     <pluginRepositories>
+        <!-- fdk私服 -->
+        <pluginRepository>
+            <id>fdk</id>
+            <name>FDK Repository</name>
+            <url>https://dl.bintray.com/faury/fdk</url>
+        </pluginRepository>
+        <!-- fdk私服 -->
+        <pluginRepository>
+            <id>fwmf</id>
+            <name>FWMF Repository</name>
+            <url>https://bintray.com/faury/fwmf-module</url>
+        </pluginRepository>
         <!-- 插件仓库 Nexus私服 -->
         <pluginRepository>
             <id>nexus</id>

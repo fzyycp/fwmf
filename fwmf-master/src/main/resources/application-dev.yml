@@ -48,9 +48,12 @@ fdk:
 # 数据源配置
 spring:
   datasource:
-    url: jdbc:mysql://128.0.9.252:3306/eb
-    username: root
-    password: 888888
+#    url: jdbc:mysql://128.0.9.252:3306/eb
+#    username: root
+#    password: 888888
+    url: jdbc:mysql://ssk3:3306/eb
+    username: fanyc
+    password: #EDCrfv4
 #    url: ENC(JZkH5bu2/qQpVokeEyZbsmZ0bFuuBzlUnm7e54uKRJxbx2Ue9dW0kYvdY3y1JOXiWUqJGDNRiNfpUj8QzVl1KWMtXYmR8uAlUV0FB0hZ7sY=)
     driver-class-name: com.mysql.jdbc.Driver
 #    username: ENC(UypceX2kJe2m+qvQceaxmQ==)
