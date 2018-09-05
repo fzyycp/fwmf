@@ -11,12 +11,12 @@
 
     <groupId>cn.faury.fwmf</groupId>
     <artifactId>fwmf-gateway</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.4</version>
     <description>移动端接口网关系统</description>
 
     <properties>
-        <fdk.mobile.spring.boot.starter.version>0.0.1</fdk.mobile.spring.boot.starter.version>
-        <fwmf.shiro.repository.mongodb.spring.boot.starter.version>0.0.1</fwmf.shiro.repository.mongodb.spring.boot.starter.version>
+        <fdk.mobile.spring.boot.starter.version>0.0.3</fdk.mobile.spring.boot.starter.version>
+        <fdk.shiro.repository.mongodb.spring.boot.starter.version>0.0.1</fdk.shiro.repository.mongodb.spring.boot.starter.version>
         <fwmf.module.system.spring.boot.starter.version>0.0.1</fwmf.module.system.spring.boot.starter.version>
         <fwmf.module.area.spring.boot.starter.version>0.0.1</fwmf.module.area.spring.boot.starter.version>
         <fwmf.module.app.spring.boot.starter.version>0.0.1</fwmf.module.app.spring.boot.starter.version>
@@ -24,6 +24,7 @@
         <fwmf.module.apptester.spring.boot.starter.version>0.0.1</fwmf.module.apptester.spring.boot.starter.version>
         <fwmf.module.systemconfig.spring.boot.starter.version>0.0.1</fwmf.module.systemconfig.spring.boot.starter.version>
         <fwmf.module.school.spring.boot.starter.version>0.0.1</fwmf.module.school.spring.boot.starter.version>
+        <fwmf.module.sms.spring.boot.starter.version>0.0.1</fwmf.module.sms.spring.boot.starter.version>
     </properties>
 
     <dependencies>
@@ -31,7 +32,7 @@
         <dependency>
             <groupId>cn.faury.fdk</groupId>
             <artifactId>fdk-shiro-repository-mongodb-spring-boot-starter</artifactId>
-            <version>${fwmf.shiro.repository.mongodb.spring.boot.starter.version}</version>
+            <version>${fdk.shiro.repository.mongodb.spring.boot.starter.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>
@@ -74,6 +75,11 @@
             <artifactId>fwmf-module-school-spring-boot-starter</artifactId>
             <version>${fwmf.module.school.spring.boot.starter.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-sms-spring-boot-starter</artifactId>
+            <version>${fwmf.module.sms.spring.boot.starter.version}</version>
+        </dependency>
 
         <!--springboot基础依赖-->
         <dependency>
@@ -109,5 +115,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>bintray-faury-fwmf</id>
+            <name>faury-fwmf</name>
+            <url>https://api.bintray.com/maven/faury/fwmf/fwmf-gateway/;publish=1</url>
+        </repository>
+    </distributionManagement>
 
 </project>

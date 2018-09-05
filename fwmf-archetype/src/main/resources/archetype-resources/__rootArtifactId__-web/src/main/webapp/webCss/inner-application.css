@@ -1,0 +1,130 @@
+body {
+    background-color: #fff;
+}
+
+body .mainContent{
+    width:100%;
+}
+
+.header-area {
+    background-color: #fff;
+}
+
+.toolbar-region {
+    margin: 8px 0;
+    height: 34px;
+    line-height: 34px;
+}
+
+.toolbar-region > .toolbar-region-left {
+    float: left;
+}
+
+.toolbar-region > .toolbar-region-left > span {
+    padding-right: 5px;
+}
+
+.toolbar-region > .toolbar-region-right {
+    float: right;
+}
+
+.toolbar-region > .toolbar-region-right > span {
+    padding-right: 5px;
+}
+
+body .col {
+    min-width: 350px;
+}
+
+.col-fixed .box {
+    margin-bottom: 0px;
+    height: 100%;
+}
+
+.col-fixed .box.border.orange {
+    border: 1px solid #eee;
+    margin: 0px -5px;
+}
+
+.col-fixed .box.border.orange > .box-title {
+    color: #333 !important;
+    background-color: #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.col-fixed .box.border.orange > .box-body {
+    padding: 0px;
+}
+
+.btn-view, .btn-reset, .btn-search {
+    font-size: 12px;
+    border-radius: 0px;
+    padding: 8px 16px;
+    height: 32px;
+    line-height: 14px;
+}
+
+.btn-view {
+    color: #333;
+    border: 1px solid #ddd;
+    background-color: #eee;
+}
+
+.btn-view:hover, .btn-view:focus, .btn-view:active, .btn-view.active, .open .dropdown-toggle.btn-view {
+    color: #333;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.btn-search,
+.btn-reset {
+    color: #fff;
+    border: 1px solid #09c;
+    background-color: #09c;
+}
+
+.btn-search:hover, .btn-search:focus, .btn-search:active, .btn-search.active, .open .dropdown-toggle.btn-search,
+.btn-reset:hover, .btn-reset:focus, .btn-reset:active, .btn-reset.active, .open .dropdown-toggle.btn-reset {
+    background-color: #28B5D6;
+    border-color: #28B5D6;
+}
+
+.query-region {
+    border-top: 3px solid #ddd;
+}
+
+.grid {
+    border-top: 3px solid #ddd;
+    border-bottom: 1px solid #d1ccc8;
+}
+
+.grid .grid-paging .grid-paging-btns .btn-page-enabled {
+    border: 1px solid #09c;
+    background-color: #09c;
+    color: #fff;
+    opacity: 1;
+
+}
+
+.stress {
+    color: red;
+    font-weight: bold;
+}
+
+.f-form > .form .submit-btn input,
+.f-form > .form-horizontal .submit-btn input {
+    background: #56b1a6;
+    -webkit-border-color: #56b1a6;
+    -moz-border-color: #56b1a6;
+    -o-border-color: #56b1a6;
+    border-color: #56b1a6;
+}
+
+.query-region > .form .form-group > div select,
+.query-region > .form-horizontal .form-group > div select {
+    font-size: 13px;
+}
+
+#createTimeFrom,#createTimeTo{
+    cursor: pointer;
+}

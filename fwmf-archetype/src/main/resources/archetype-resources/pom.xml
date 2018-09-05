@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>${groupId}</groupId>
+    <artifactId>${artifactId}</artifactId>
+    <packaging>pom</packaging>
+    <version>${version}</version>
+    <name>${project.artifactId}</name>
+    <description>项目集合</description>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.2.RELEASE</version> <!-- lookup parent from repository -->
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.8</jdk.version>
+
+        <commons-lang.version>2.4</commons-lang.version>
+        <struts.version>2.5.16</struts.version>
+        <com.caucho.hessian.version>4.0.37</com.caucho.hessian.version>
+        <commons-dbcp.version>1.4</commons-dbcp.version>
+        <mybatis.version>3.4.6</mybatis.version>
+        <mybatis.spring.version>1.3.1</mybatis.spring.version>
+        <servlet.version>3.1.0</servlet.version>
+        <shiro.version>1.4.0</shiro.version>
+
+    </properties>
+    <repositories>
+        <!-- fdk私服 -->
+        <repository>
+            <id>fdk</id>
+            <name>FDK Repository</name>
+            <url>https://dl.bintray.com/faury/fdk</url>
+        </repository>
+        <!-- fwmf-module私服 -->
+        <repository>
+            <id>fwmf-module</id>
+            <name>FWMF-MODULE Repository</name>
+            <url>https://dl.bintray.com/faury/fwmf-module</url>
+        </repository>
+        <!-- fwmf私服 -->
+        <repository>
+            <id>fwmf</id>
+            <name>FWMF Repository</name>
+            <url>https://dl.bintray.com/faury/fwmf</url>
+        </repository>
+        <!--<repository>-->
+        <!--<id>253</id>-->
+        <!--<name>Team Nexus Repository</name>-->
+        <!--<url>http://221.226.5.74:8081/nexus/content/groups/public/</url>-->
+        <!--</repository>-->
+        <!-- Nexus私服 -->
+        <repository>
+            <id>nexus</id>
+            <name>Team Nexus Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <!-- fdk私服 -->
+        <pluginRepository>
+            <id>fdk</id>
+            <name>FDK Repository</name>
+            <url>https://dl.bintray.com/faury/fdk</url>
+        </pluginRepository>
+        <!-- fwmf-module私服 -->
+        <pluginRepository>
+            <id>fwmf-module</id>
+            <name>FWMF-MODULE Repository</name>
+            <url>https://dl.bintray.com/faury/fwmf-module</url>
+        </pluginRepository>
+        <!-- fwmf私服 -->
+        <pluginRepository>
+            <id>fwmf</id>
+            <name>FWMF Repository</name>
+            <url>https://dl.bintray.com/faury/fwmf</url>
+        </pluginRepository>
+        <!--<pluginRepository>-->
+        <!--<id>253</id>-->
+        <!--<name>Team Nexus Repository</name>-->
+        <!--<url>http://221.226.5.74:8081/nexus/content/groups/public/</url>-->
+        <!--<snapshots>-->
+        <!--<enabled>false</enabled>-->
+        <!--</snapshots>-->
+        <!--</pluginRepository>-->
+        <!-- 插件仓库 Nexus私服 -->
+        <pluginRepository>
+            <id>nexus</id>
+            <name>Team Nexus Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <dependencyManagement>
+        <dependencies>
+            <!--FDK库-->
+            <dependency>
+                <groupId>cn.faury.fdk</groupId>
+                <artifactId>fdk-shiro</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.faury.fdk</groupId>
+                <artifactId>fdk-shiro-repository-mongodb</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <!--Fwmf框架支持-->
+            <dependency>
+                <groupId>cn.faury.fwmf.module</groupId>
+                <artifactId>fwmf-module-user-role-service</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.faury.fwmf.module</groupId>
+                <artifactId>fwmf-module-menu-service</artifactId>
+                <version>0.0.2</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts2-convention-plugin</artifactId>
+                <version>${struts.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts2-core</artifactId>
+                <version>${struts.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.sun</groupId>
+                        <artifactId>tools</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-orm</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-test</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>opensymphony</groupId>
+                        <artifactId>ognl</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- Spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>slf4j-api</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>${com.caucho.hessian.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <!-- struts2与spring集成 -->
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts2-spring-plugin</artifactId>
+                <version>${struts.version}</version>
+                <exclusions>
+                    <exclusion><!-- 排除spring-core,以避免版本冲�? -->
+                        <groupId>org.springframework</groupId>
+                        <artifactId>sping-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- spring jdbc -->
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>${commons-dbcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-pool</groupId>
+                <artifactId>commons-pool</artifactId>
+                <version>${commons-pool.version}</version>
+            </dependency>
+
+            <!-- Spring测试框架 -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <!-- JUnit start -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- struts2对json支持 -->
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts2-json-plugin</artifactId>
+                <version>${struts.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis.spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${servlet.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>4.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.4</version>
+            </dependency>
+            <dependency>
+                <groupId>net.arnx</groupId>
+                <artifactId>jsonic</artifactId>
+                <version>1.3.5</version>
+            </dependency>
+            <dependency>
+                <groupId>jstl</groupId>
+                <artifactId>jstl</artifactId>
+                <version>1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>3.12</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>3.12</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.json-lib</groupId>
+                <artifactId>json-lib</artifactId>
+                <version>2.4</version>
+                <classifier>jdk15</classifier>
+            </dependency>
+            <dependency>
+                <groupId>net.glxn.qrcode</groupId>
+                <artifactId>qrcode</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.191</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <!-- 插件配置 -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <source>${jdk.version}</source>
+                        <target>${jdk.version}</target>
+                        <fork>true</fork>
+                        <verbose>true</verbose>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+                <!-- war插件, 设定war名称不带版本 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.2.2</version>
+                    <configuration>
+                        <warName>${project.artifactId}</warName>
+                    </configuration>
+                </plugin>
+
+                <!-- resource插件, 设定编码 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <configuration>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+
+                <!-- jar相关插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+
+                </plugin>
+
+                <!-- clean插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+
+                <!-- install插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.2</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.0</version>
+                    <configuration>
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                            <configuration>
+                                <encoding>UTF-8</encoding>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+                <!-- Findbugs插件 -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>3.0.5</version>
+                    <configuration>
+                        <xmlOutput>true</xmlOutput>
+                        <effort>Max</effort>
+                        <findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.1.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

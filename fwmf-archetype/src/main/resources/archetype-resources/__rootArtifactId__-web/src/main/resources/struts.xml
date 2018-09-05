@@ -1,0 +1,45 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="${version}" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.configuration.xmlreload" value="true" />
+	<constant name="struts.ui.theme" value="xhtml" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.action.extension" value="," />
+	<constant name="struts.json.dateformat" value="yyyy-MM-dd HH:mm:ss" />
+	<constant name="struts.multipart.maxSize" value="1073741824" />
+
+	<package name="struts-interceptor" extends="json-default">
+		<interceptors>
+			<interceptor name="exceptionInterceptor" class="${package}.web.global.config.ExceptionInterceptor" />
+			<interceptor name="operationRecordInterceptor" class="${package}.web.global.config.OlanOperationRecordInterceptor" />
+			<interceptor-stack name="myExceptionInterceptor">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="operationRecordInterceptor" />
+				<interceptor-ref name="exceptionInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myExceptionInterceptor" />
+		<global-results>
+			<result name="ajaxError" type="json">
+				<param name="statusCode">543</param>
+				<param name="root">exception.message</param>
+			</result>
+			<result name="error">/WEB-INF/pages/global/error500.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="${package}.services.common.exception.OlansException" result="ajaxError" />
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+	</package>
+</struts>

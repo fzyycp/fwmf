@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: ${rootArtifactId}-gateway
+  profiles:
+    active: dev
+  jackson:
+    date-format: "yyyy-MM-dd HH:mm:ss"
+    joda-date-time-format: "yyyy-MM-dd HH:mm:ss"
+    time-zone: GMT+8
+logging:
+  level:
+    ROOT: error
+    cn.wassk: debug
+    cn.faury: debug
+#  path: D:/logs/15081/${rootArtifactId}-gateway
+  register-shutdown-hook: true

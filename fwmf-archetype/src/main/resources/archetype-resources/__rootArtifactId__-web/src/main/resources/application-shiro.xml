@@ -1,0 +1,122 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="${version}" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="loginSuccessFilter" class="cn.faury.fdk.shiro.filter.LoginSuccessFilter">
+        <constructor-arg name="roleService" ref="roleService" />
+        <constructor-arg name="userService" ref="userService" />
+        <constructor-arg name="saCode" value="${symbol_dollar}{systemCode}" />
+    </bean>
+
+    <bean id="fdkCaptchaConfig" class="cn.faury.fdk.captcha.config.FdkCaptchaConfig">
+        <property name="enable" value="${symbol_dollar}{fdk.captcha.enable}"/>
+    </bean>
+    <bean id="fdkCaptchaValidateFilter"
+          class="cn.faury.fdk.shiro.filter.FdkCaptchaValidateFilter">
+        <constructor-arg name="fdkCaptchaConfig" ref="fdkCaptchaConfig"/>
+    </bean>
+
+    <!--shiro过滤器配置，bean的id值须与web中的filter-name的值相同 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 没有权限或者失败后跳转的页面 -->
+        <property name="loginUrl" value="/login"/>
+        <property name="unauthorizedUrl" value="/login"/>
+        <property name="filters">
+            <util:map>
+                <entry key="loginSuccessFilter" value-ref="loginSuccessFilter"/>
+                <entry key="captchaValidate" value-ref="fdkCaptchaValidateFilter"/>
+            </util:map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                /login = captchaValidate,loginSuccessFilter
+                /logout = logout
+                /error404 = anon
+                /error500 = anon
+                /ueditor = anon
+                /captcha.jpg = anon
+                /bootstrap-dist/** = anon
+                /css/** = anon
+                /font-awesome/** = anon
+                /img/** = anon
+                /js/** = anon
+                /ClouAdmin/** = anon
+                /webJs/** = anon
+                /webCss/** = anon
+                /webImg/** = anon
+                /index.html = anon
+                /** = authc
+            </value>
+        </property>
+    </bean>
+
+    <!--securityManager是shiro的核心，初始化时协调各个模块运行 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!--单个realm使用realm,如果有多个realm，使用realms属性代替 -->
+        <property name="realm" ref="shiroRealm"/>
+        <!-- <property name="cacheManager" ref="shiroEhcacheManager" /> -->
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+
+    <!--realm配置，realm是shiro的桥梁，它主要是用来判断subject是否可以登录及权限等 -->
+    <bean id="shiroRealm" class="cn.faury.fdk.shiro.realm.FdkShiroRealm">
+        <property name="userService" ref="userService"/>
+        <property name="roleService" ref="roleService"/>
+        <property name="saCode" value="${symbol_dollar}{systemCode}"></property>
+        <property name="credentialsMatcher" ref="credentialsMatcher"/>
+    </bean>
+    <bean id="credentialsMatcher" class="cn.faury.fdk.shiro.core.FdkShiroCredentialsMatcher"/>
+
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="globalSessionTimeout" value="${symbol_dollar}{session.timeout}"/>
+        <property name="sessionListeners" ref="sessionListener"></property>
+        <property name="deleteInvalidSessions" value="true"/>
+        <property name="sessionValidationSchedulerEnabled" value="true"/>
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <property name="sessionIdCookieEnabled" value="true"/>
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+    </bean>
+    <bean id="sessionListener" class="cn.faury.fdk.shiro.core.SessionExtListener"/>
+    <bean id="sessionDAO" class="cn.faury.fdk.shiro.core.ShiroSessionDAO">
+        <constructor-arg name="shiroSessionRepository" ref="shiroSessionRepository"/>
+    </bean>
+
+    <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="JSESSIONID_S"/>
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="${symbol_dollar}{session.timeout}"/>
+    </bean>
+
+    <bean id="shiroSessionRepository" class="cn.faury.fdk.shiro.repository.mongo.MongoDBShiroSessionRepository">
+        <constructor-arg name="mongoClient" ref="mongoClient"/>
+        <constructor-arg name="dbName" value="${symbol_dollar}{fdk.shiro.repository.mongodb.db-name}" />
+        <constructor-arg name="collName" value="${symbol_dollar}{fdk.shiro.repository.mongodb.coll-name}" />
+    </bean>
+
+    <bean id="mongoClient" class="com.mongodb.MongoClient">
+        <constructor-arg name="host" value="${symbol_dollar}{fdk.shiro.repository.mongodb.host}"/>
+        <constructor-arg name="port" value="${symbol_dollar}{fdk.shiro.repository.mongodb.port}"/>
+    </bean>
+
+    <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!-- AOP式方法级权限检查 -->
+    <bean
+            class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+            depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+
+    <bean
+            class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+</beans>

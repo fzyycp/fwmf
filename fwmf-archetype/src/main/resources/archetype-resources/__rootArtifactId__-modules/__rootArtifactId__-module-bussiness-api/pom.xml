@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>${rootArtifactId}</artifactId>
+        <groupId>${groupId}</groupId>
+        <version>${version}</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>${groupId}.${rootArtifactId}</groupId>
+    <artifactId>${artifactId}</artifactId>
+    <version>${version}</version>
+
+    <properties>
+        <fdk.common>0.0.9</fdk.common>
+        <fwmf.module.user.role.api>0.0.1</fwmf.module.user.role.api>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-common</artifactId>
+            <version>${fdk.common}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-user-role-api</artifactId>
+            <version>${fwmf.module.user.role.api}</version>
+        </dependency>
+    </dependencies>
+
+</project>

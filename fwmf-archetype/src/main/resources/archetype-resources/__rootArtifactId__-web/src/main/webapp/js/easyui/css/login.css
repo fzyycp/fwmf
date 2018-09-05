@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+body{background:url(../images/login/login_bg01.jpg);}
+#mianbox{background:url(../images/login/login_bg02.jpg) repeat-x; height:768px;}
+#login-top{ height:90px;}
+#loginbox{ width:810px; height:500px;  margin:0 auto;}
+#loginbox-top{ width:701px; height:386px; margin:0 auto;}
+#login-content{ background:url(../images/login/login_bg03.jpg) repeat-x; width:800px; height:103px;position:relative;}
+#login-content-tip{position:absolute; background:url(../images/login/login_tip.png) no-repeat; width:57px; height:108px; left:31px;top:-5px;}
+#login-content-bg{width:646px; height:42px;margin:32px 0 0 117px; float:left;_margin:32px 0 0 60px;}
+#login-content-bg table{cellpadding:0; cellspacing:0; border:none; height:42px;}
+#login-content-bg table .bd-td{ background:url(../images/login/login-input.png) no-repeat; width:246px; height:40px; padding-left:10px; line-height:40px; font-size:14px; color:#788592; font-family:"微软雅黑"; border:1px solid transparent;}
+#login-content-bg table .bd-button a{ background:url(../images/login/login_button_n.png) no-repeat; width:100px; height:39px; text-align:center; line-height:39px; color:#1b3c6b; font-size:16px; font-family:"微软雅黑"; font-weight:bold; display:block; text-decoration:none;}
+#login-content-bg table .bd-button a:hover{ background:url(../images/login/login_button_h.png) no-repeat; width:100px; height:39px;font-weight:bold; display:block;color:#444d04;  }
+.tip{position:absolute;width:363px; height:56px; background:url(../images/login/tip_bg.png) no-repeat;top:-35px; right:40px;}
+.tip img{ float:left;margin:8px 10px 0 25px;}
+.tip p{color:#ffffff; font-size:14px;margin-top:18px;}

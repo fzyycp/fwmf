@@ -1,0 +1,129 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="${version}" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration ${version}//EN"
+        "http://mybatis.org/dtd/${artifactId}-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="reflectTables" targetRuntime="MyBatis3">
+        <!--文件编码-->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!--fwmf generator配置-->
+        <fwmfGenerator targetPackage="${package}.module"
+                       targetProject=".${symbol_escape}src${symbol_escape}generator${symbol_escape}java"
+                       modelName="bussiness"
+                       enableGeneratorModifiableMvc="true"
+        />
+        <!--生成gateway用controller-->
+        <fwmfGeneratorController targetProject=".${symbol_escape}src${symbol_escape}generator${symbol_escape}java"
+                                 targetSpringPackage="${package}.gateway.controller"
+                                 generateSpring="true"
+                                 targetStruts2Package="${package}.web"
+                                 struts2ActionRootClass="${package}.web.global.action.BaseJspAction"
+                                 generateStruts2="true"
+                                 menuTableName="sys_t_menu_info"
+        />
+        <!--自定义插件-->
+        <plugin type="cn.faury.fwmf.generator.plugins.ModifiableMvcPlugin">
+            <property name="targetProject" value=".${symbol_escape}src${symbol_escape}generator${symbol_escape}java"/>
+            <property name="targetBasePackage" value="${package}.module"/>
+            <property name="modelKeyName" value="bussiness"/>
+        </plugin>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://128.0.9.252:3306/${parentArtifactId}"
+                        userId="root" password="888888">
+            <property name="remarks" value="true"/>
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+
+        <!-- 指定数据库表，对应的表生成的Controller、Service、Mapper、SQLProvider模块名,table的简化，与下面的配置等效 -->
+        <fwmfTable tableName="sys_t_app_info" modelKey="FwmfAppInfo">
+            <generatedKey column="APP_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_code_info" modelKey="FwmfCodeInfo" actionKey="/system/code">
+            <generatedKey column="CODE_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_function_info" modelKey="FwmfFunctionInfo">
+            <generatedKey column="FUNCTION_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_menu_info" modelKey="FwmfMenuInfo">
+            <generatedKey column="MENU_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_operation_record" modelKey="FwmfOperationRecord" actionKey="/system/record">
+            <generatedKey column="OPERATION_RECORD_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_role_info" modelKey="FwmfRoleInfo" actionKey="/system/role">
+            <generatedKey column="ROLE_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_role_r_function" modelKey="FwmfRoleRFunction">
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_role_r_menu" modelKey="FwmfRoleRMenu">
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_sensitive_info" modelKey="FwmfSensitiveInfo" actionKey="/system/sensitive">
+            <generatedKey column="SENSITIVE_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_system_info" modelKey="FwmfSystemInfo">
+            <generatedKey column="SYSTEM_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_user_info" modelKey="FwmfUserInfo">
+            <generatedKey column="USER_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_user_r_role" modelKey="FwmfUserRRole">
+        </fwmfTable>
+        <fwmfTable tableName="sys_t_user_r_system" modelKey="FwmfUserRSystem">
+        </fwmfTable>
+
+
+        <fwmfTable tableName="t_ad_info" modelKey="AdInfo" actionKey="/ad/info">
+            <generatedKey column="AD_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_book_baseinfo" modelKey="BookBaseInfo" actionKey="/book/info">
+            <generatedKey column="BOOK_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_book_category_info" modelKey="BookCategoryInfo" actionKey="/book/category">
+            <generatedKey column="CATEGORY_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_book_chapter_info" modelKey="BookChapterInfo" actionKey="/book/chapter">
+            <generatedKey column="CHAPTER_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_book_comment" modelKey="BookComment" actionKey="/book/comment">
+            <generatedKey column="COMMENT_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_book_content_info" modelKey="BookContentInfo" actionKey="/book/content">
+            <generatedKey column="CONTENT_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_book_content_txt" modelKey="BookContentTxtInfo">
+            <generatedKey column="ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_book_pic" modelKey="BookPic">
+            <generatedKey column="ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_book_r_category" modelKey="BookRCategory">
+            <generatedKey column="ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_book_views" modelKey="BookViews">
+            <generatedKey column="ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_customer_advice" modelKey="CustomerAdvice" actionKey="/customer/advice">
+            <generatedKey column="ADVICE_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_customer_info" modelKey="CustomerInfo" actionKey="/customer/info">
+            <generatedKey column="CUSTOMER_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_goods_fav" modelKey="GoodsFav">
+            <generatedKey column="ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_goods_history" modelKey="GoodsHistory">
+            <generatedKey column="ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_qa_info" modelKey="QaInfo" actionKey="/system/qa">
+            <generatedKey column="QA_ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+        <fwmfTable tableName="t_qa_txt" modelKey="QaTxt">
+            <generatedKey column="ID" sqlStatement="JDBC"/>
+        </fwmfTable>
+    </context>
+</generatorConfiguration>

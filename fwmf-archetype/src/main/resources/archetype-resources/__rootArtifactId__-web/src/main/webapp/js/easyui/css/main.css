@@ -1,0 +1,56 @@
+table {
+	font-size: 12px;
+}
+
+.listsearch {
+	background-color: #F4F4F4;
+}
+
+.inputrequired {
+	color: red;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+.inputtext{
+	vertical-align: middle;
+	padding: 0px 0px;
+}
+
+.editform {
+	padding: 0px 0px;
+}
+
+.editform table{
+	border:1px solid #c0c0c0;
+	width:100%;
+	color:#000;
+	text-align:left;
+	background:#fafcff;
+	border-collapse:collapse;border-spacing:0px;
+}
+
+.editform td.label {
+	text-align: left;
+	width:20%;
+	white-space: nowrap;
+	background:#f1f6ff;
+}
+.editform td{
+	height: 26px;
+	width:80%;
+	border:1px solid #c0c0c0;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+.alert-error{
+	padding-left:5px;
+	padding-right:5px;
+}
+
+.editform input[readonly]{
+ 
+	background-color:#F8F8F8;
+ 
+}

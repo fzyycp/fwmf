@@ -1,0 +1,69 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="${version}" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+           http://www.springframework.org/schema/tx
+     	   http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+    <!--通用数据库DAO -->
+    <!--<bean id="dao" class="cn.faury.support.mybatis.dao.impl.CommonDaoImpl">-->
+        <!--<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>-->
+    <!--</bean>-->
+    <bean id="commonDao" class="cn.faury.fdk.mybatis.dao.impl.CommonDaoImpl">
+        <property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+    </bean>
+
+    <!-- 配置dbcp数据源 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${symbol_dollar}{jdbc.driverClassName}"/>
+        <property name="url" value="${symbol_dollar}{jdbc.url}"/>
+        <property name="username" value="${symbol_dollar}{jdbc.username}"/>
+        <property name="password" value="${symbol_dollar}{jdbc.password}"/>
+        <!-- 队列中的最小等待数 -->
+        <property name="minIdle" value="${symbol_dollar}{jdbc.minIdle}"/>
+        <!-- 队列中的最大等待数 -->
+        <property name="maxIdle" value="${symbol_dollar}{jdbc.maxIdle}"/>
+        <!-- 最长等待时间，单位毫秒 -->
+        <property name="maxWait" value="${symbol_dollar}{jdbc.maxWait}"/>
+        <!-- 最大活跃数 -->
+        <property name="maxActive" value="${symbol_dollar}{jdbc.maxActive}"/>
+        <property name="initialSize" value="${symbol_dollar}{jdbc.initialSize}"/>
+        <property name="removeAbandoned" value="${symbol_dollar}{jdbc.removeAbandoned}"/>
+        <property name="testWhileIdle" value="${symbol_dollar}{jdbc.testWhileIdle}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${symbol_dollar}{jdbc.timeBetweenEvictionRunsMillis}"/>
+        <property name="numTestsPerEvictionRun" value="${symbol_dollar}{jdbc.numTestsPerEvictionRun}"/>
+        <property name="validationQuery" value="${symbol_dollar}{jdbc.validationQuery}"/>
+        <property name="validationQueryTimeout" value="${symbol_dollar}{jdbc.validationQueryTimeout}"/>
+    </bean>
+
+    <!-- 配置mybitasSqlSessionFactoryBean -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis.xml"/>
+    </bean>
+
+    <!-- 配置SqlSessionTemplate -->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
+    <!-- Mapper自动扫描注册 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="annotationClass" value="cn.faury.fdk.mybatis.AutoScannedMapper"/>
+        <property name="basePackage" value="cn.jinglun.yexs.provider,cn.faury"/>
+        <property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate"/>
+    </bean>
+
+    <!-- 事务配置 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 使用annotation注解方式配置事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

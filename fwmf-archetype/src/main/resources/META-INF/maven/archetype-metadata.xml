@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0
+                            http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+        name="fwmf-archetype"
+        xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <requiredProperties>
+        <requiredProperty key="projectCodeFirstUp">
+            <defaultValue>Ftpl</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="projectDesc">
+            <defaultValue>模板项目</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+    <fileSets>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>install</directory>
+            <includes>
+                <include>**/*.sql</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+    <modules>
+        <module id="${rootArtifactId}-web" dir="__rootArtifactId__-web" name="${rootArtifactId}-web">
+            <fileSets>
+                <fileSet filtered="true" packaged="true" encoding="UTF-8">
+                    <directory>src/main/java</directory>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <include>**/*.xml</include>
+                        <include>**/*.properties</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory>src/main/webapp</directory>
+                    <includes>
+                        <include>**/*.txt</include>
+                        <include>**/*.jsp</include>
+                        <include>**/*.xml</include>
+                        <include>**/*.html</include>
+                    </includes>
+                </fileSet>
+                <fileSet encoding="UTF-8">
+                    <directory>src/main/webapp</directory>
+                    <includes>
+                        <include>**/*.psd</include>
+                        <include>**/*.</include>
+                        <include>**/*.css</include>
+                        <include>**/*.swf</include>
+                        <include>**/*.scss</include>
+                        <include>**/*.gif</include>
+                        <include>**/*.js</include>
+                        <include>**/*.eot</include>
+                        <include>**/*.exe</include>
+                        <include>**/*.ico</include>
+                        <include>**/*.md</include>
+                        <include>**/*.json</include>
+                        <include>**/*.woff2</include>
+                        <include>**/*.older</include>
+                        <include>**/*.jar</include>
+                        <include>**/*.map</include>
+                        <include>**/*.otf</include>
+                        <include>**/*.jpg</include>
+                        <include>**/*.svg</include>
+                        <include>**/*.xap</include>
+                        <include>**/*.ttf</include>
+                        <include>**/*.png</include>
+                        <include>**/*.less</include>
+                        <include>**/*.woff</include>
+                        <include>**/*.0</include>
+                        <include>**/*.as</include>
+                        <include>**/*.gz</include>
+                        <include>**/*.php</include>
+                        <include>**/*.swc</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+        <module id="${rootArtifactId}-upload" dir="__rootArtifactId__-upload" name="${rootArtifactId}-upload">
+            <fileSets>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory>src/main/webapp</directory>
+                    <includes>
+                        <include>**/*.jsp</include>
+                        <include>**/*.xml</include>
+                    </includes>
+                </fileSet>
+                <fileSet encoding="UTF-8">
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <include>**/*.md</include>
+                    </includes>
+                </fileSet>
+                <fileSet encoding="UTF-8">
+                    <directory>src/main/webapp</directory>
+                    <includes>
+                        <include>**/*.json</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+        <module id="${rootArtifactId}-module-bussiness-api"
+                dir="__rootArtifactId__-modules/__rootArtifactId__-module-bussiness-api"
+                name="${rootArtifactId}-module-bussiness-api"/>
+        <module id="${rootArtifactId}-module-bussiness-service"
+                dir="__rootArtifactId__-modules/__rootArtifactId__-module-bussiness-service"
+                name="${rootArtifactId}-module-bussiness-service"/>
+        <module id="${rootArtifactId}-gateway" dir="__rootArtifactId__-gateway" name="${rootArtifactId}-gateway">
+            <fileSets>
+                <fileSet filtered="true" packaged="true" encoding="UTF-8">
+                    <directory>src/main/java</directory>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <include>**/*.yml</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+        <module id="mybatis-generator" dir="mybatis-generator" name="mybatis-generator">
+            <fileSets>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <include>**/*.xml</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+    </modules>
+</archetype-descriptor>

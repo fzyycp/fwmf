@@ -21,6 +21,7 @@
     <modules>
         <module>fwmf-gateway</module>
         <module>fwmf-master</module>
+        <module>fwmf-archetype</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
@@ -105,9 +106,9 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>bintray-faury-fdk</id>
-            <name>faury-fdk</name>
-            <url>https://api.bintray.com/maven/faury/fdk/fwmf/;publish=1</url>
+            <id>bintray-faury-fwmf</id>
+            <name>faury-fwmf</name>
+            <url>https://api.bintray.com/maven/faury/fwmf/fwmf/;publish=1</url>
         </repository>
     </distributionManagement>
 </project>

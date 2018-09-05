@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>${rootArtifactId}</artifactId>
+        <groupId>${groupId}</groupId>
+        <version>${version}</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>${groupId}.${rootArtifactId}</groupId>
+    <artifactId>${artifactId}</artifactId>
+    <version>${version}</version>
+
+    <properties>
+        <fdk.mybatis>0.0.1</fdk.mybatis>
+        <fwmf.module.common.service>0.0.1</fwmf.module.common.service>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${groupId}.${rootArtifactId}</groupId>
+            <artifactId>${rootArtifactId}-module-bussiness-api</artifactId>
+            <version>${version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-mybatis</artifactId>
+            <version>${fdk.mybatis}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-common-service</artifactId>
+            <version>${fwmf.module.common.service}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,74 @@
+server:
+  port: 15080
+  servlet:
+    context-path: /${rootArtifactId}-gateway
+
+fdk:
+  shiro:
+    saCode: "${rootArtifactId}-web"
+    session-timeout: 86400000
+    filter:
+#登录、登录成功页为系统默认URL，相同时不出现302跳转
+#      login-url: "/login"
+#      success-url: "/login"
+#      unauthorized-url: "/login"
+      chain:
+#登录、退出、验证码为系统默认，如果修改了上面的filter则在此处重新配置
+#       - "captcha,login:/login"
+#       - "logout:/logout"
+#       - "anon:/captcha.jpg"
+       - "anon:/v2/api-docs/**"
+       - "anon:/swagger-resources/**"
+       - "anon:/webjars/springfox-swagger-ui/**"
+       - "anon:/swagger-ui.html"
+       - "anon:/health"
+       - "authc:/**"
+#shiro的存储仓库MongoDB配置
+    repository:
+      mongodb:
+        port: 27017 #端口号
+        host: "128.0.9.252" #服务器地址
+        username: "" #登录名
+        password: "" #登录密码
+        db-name: "${projectCodeFirstUp}DevSessionDb" #Session所用DB名称
+        coll-name: "${projectCodeFirstUp}DevSessionColl" #Session所用Collection名称
+#验证码配置，默认基本满足
+  captcha:
+    enable: false #是否启用
+#    request-name: "captchaCode" #前端传入的参数名
+#    border: "yes" #是否有边框
+#    borderColor: "105,179,90" #边框颜色
+#    font-color: "blue" #内部文字颜色
+#    font-names: "宋体,楷体,微软雅黑" #内部文字字体
+#    char-length: 4 #内部文字个数
+#    image-width: 125 #验证码图片宽度
+#    image-height: 45 #验证码图片高度
+#    session-key: "fdkCaptchaCode" #验证码存入Session的Key
+
+# 数据源配置
+spring:
+  datasource:
+    url: jdbc:mysql://128.0.9.252:3306/${rootArtifactId}
+    username: ENC(CTLCIeAXhpyzHIJ3dtfJoQ==)
+    password: ENC(oj8Z23Hed5qO5cbP6AtZAA==)
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource  #连接池配置
+
+#加密盐
+jasypt:
+  encryptor:
+    password: PCEX2KJE2M
+
+#mybatis
+#entity扫描的包名
+mybatis:
+  mapper-locations: classpath*:/mybaits/*Mapper.xml #Mapper.xml所在的位置
+  configuration:
+    map-underscore-to-camel-case: true
+
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
