@@ -10,7 +10,7 @@
 
     <groupId>${groupId}.${rootArtifactId}</groupId>
     <artifactId>${artifactId}</artifactId>
-    <version>${version}</version>
+    <version>${version}.0</version>
 
     <properties>
         <fdk.mybatis>0.0.1</fdk.mybatis>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>${groupId}.${rootArtifactId}</groupId>
             <artifactId>${rootArtifactId}-module-bussiness-api</artifactId>
-            <version>${version}</version>
+            <version>${version}.0</version>
         </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>

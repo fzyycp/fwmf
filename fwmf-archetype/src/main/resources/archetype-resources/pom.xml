@@ -6,7 +6,6 @@
     <artifactId>${artifactId}</artifactId>
     <packaging>pom</packaging>
     <version>${version}</version>
-    <name>${project.artifactId}</name>
     <description>项目集合</description>
     <parent>
         <groupId>org.springframework.boot</groupId>

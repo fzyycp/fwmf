@@ -6,12 +6,8 @@
         <version>${version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>${groupId}.ftpl</groupId>
+    <groupId>${groupId}.${rootArtifactId}</groupId>
     <artifactId>${artifactId}</artifactId>
     <packaging>war</packaging>
-    <version>${version}</version>
-    <name>${project.artifactId}</name>
-    <build>
-        <finalName>ftpl-upload</finalName>
-    </build>
+    <version>${version}.0</version>
 </project>

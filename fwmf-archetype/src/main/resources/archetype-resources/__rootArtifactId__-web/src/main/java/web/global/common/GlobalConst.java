@@ -79,11 +79,11 @@ public final class GlobalConst implements Serializable {
     /**
      * 文件上传根目录：如需修改可在配置文件中加参数 upload.root
      */
-    public static String UPLOAD_ROOT = "../${parentArtifactId}-upload.war";
+    public static String UPLOAD_ROOT = "../${rootArtifactId}-upload.war";
     /**
      * 读取上传文件路径，跟upload.root参数有关：如需修改可在配置文件中加参数 upload.root.view
      */
-    public static String UPLOAD_ROOT_VIEW = "/${parentArtifactId}-upload";
+    public static String UPLOAD_ROOT_VIEW = "/${rootArtifactId}-upload";
 
     /**
      * 初始化

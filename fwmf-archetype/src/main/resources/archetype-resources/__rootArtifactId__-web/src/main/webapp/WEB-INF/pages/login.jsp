@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-8 col-lg-offset-4 col-md-offset-3 col-sm-offset-3 col-xs-offset-2">
                     <div class="login-box-plain">
-                        <h2 class="bigintro">扬巴后台管理系统</h2>
+                        <h2 class="bigintro">${projectDesc}后台管理系统</h2>
                         <div class="divide-20"></div>
                         <form id="loginForm" action="${symbol_dollar}{ctx}/login" method="post" target="_top" role="form">
                             <div class="form-group">

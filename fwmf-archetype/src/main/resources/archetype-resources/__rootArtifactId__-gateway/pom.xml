@@ -9,7 +9,7 @@
 
     <groupId>${groupId}.${rootArtifactId}</groupId>
     <artifactId>${artifactId}</artifactId>
-    <version>${version}</version>
+    <version>${version}.0</version>
 
     <properties>
         <fdk.common.version>0.0.9</fdk.common.version>
@@ -62,12 +62,12 @@
         <dependency>
             <groupId>${groupId}.${rootArtifactId}</groupId>
             <artifactId>${rootArtifactId}-module-bussiness-api</artifactId>
-            <version>${version}</version>
+            <version>${version}.0</version>
         </dependency>
         <dependency>
             <groupId>${groupId}.${rootArtifactId}</groupId>
             <artifactId>${rootArtifactId}-module-bussiness-service</artifactId>
-            <version>${version}</version>
+            <version>${version}.0</version>
         </dependency>
 
         <dependency>

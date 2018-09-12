@@ -7,9 +7,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>${groupId}.ftpl</groupId>
+    <groupId>${groupId}.${rootArtifactId}</groupId>
     <artifactId>${artifactId}</artifactId>
-    <version>${version}</version>
+    <version>${version}.0</version>
 
     <dependencies>
         <dependency>

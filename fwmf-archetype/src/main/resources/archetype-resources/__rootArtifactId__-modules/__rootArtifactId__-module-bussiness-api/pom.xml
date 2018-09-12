@@ -10,7 +10,7 @@
 
     <groupId>${groupId}.${rootArtifactId}</groupId>
     <artifactId>${artifactId}</artifactId>
-    <version>${version}</version>
+    <version>${version}.0</version>
 
     <properties>
         <fdk.common>0.0.9</fdk.common>
