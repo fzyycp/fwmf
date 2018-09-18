@@ -11,7 +11,7 @@
 
     <groupId>cn.faury.fwmf</groupId>
     <artifactId>fwmf-gateway</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <description>移动端接口网关系统</description>
 
     <properties>
