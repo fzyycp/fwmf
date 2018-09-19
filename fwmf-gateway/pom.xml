@@ -11,23 +11,54 @@
 
     <groupId>cn.faury.fwmf</groupId>
     <artifactId>fwmf-gateway</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <description>移动端接口网关系统</description>
 
     <properties>
-        <fdk.mobile.spring.boot.starter.version>0.0.4</fdk.mobile.spring.boot.starter.version>
+        <fdk.mobile.spring.boot.starter.version>0.0.5</fdk.mobile.spring.boot.starter.version>
         <fdk.shiro.repository.mongodb.spring.boot.starter.version>0.0.1</fdk.shiro.repository.mongodb.spring.boot.starter.version>
+        <fdk.pay.spring.boot.starter.version>0.0.3</fdk.pay.spring.boot.starter.version>
         <fwmf.module.system.spring.boot.starter.version>0.0.1</fwmf.module.system.spring.boot.starter.version>
         <fwmf.module.area.spring.boot.starter.version>0.0.1</fwmf.module.area.spring.boot.starter.version>
-        <fwmf.module.app.spring.boot.starter.version>0.0.1</fwmf.module.app.spring.boot.starter.version>
-        <fwmf.module.appversion.spring.boot.starter.version>0.0.1</fwmf.module.appversion.spring.boot.starter.version>
-        <fwmf.module.apptester.spring.boot.starter.version>0.0.1</fwmf.module.apptester.spring.boot.starter.version>
+        <fwmf.module.app.spring.boot.starter.version>0.1.0</fwmf.module.app.spring.boot.starter.version>
         <fwmf.module.systemconfig.spring.boot.starter.version>0.0.1</fwmf.module.systemconfig.spring.boot.starter.version>
         <fwmf.module.school.spring.boot.starter.version>0.0.1</fwmf.module.school.spring.boot.starter.version>
         <fwmf.module.sms.spring.boot.starter.version>0.0.1</fwmf.module.sms.spring.boot.starter.version>
+        <fwmf.module.order.spring.boot.starter.version>0.0.3</fwmf.module.order.spring.boot.starter.version>
     </properties>
 
     <dependencies>
+        <!--应用服务依赖-->
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-app-spring-boot-starter</artifactId>
+            <version>${fwmf.module.app.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-area-spring-boot-starter</artifactId>
+            <version>${fwmf.module.area.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-systemconfig-spring-boot-starter</artifactId>
+            <version>${fwmf.module.systemconfig.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-school-spring-boot-starter</artifactId>
+            <version>${fwmf.module.school.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-sms-spring-boot-starter</artifactId>
+            <version>${fwmf.module.sms.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-order-spring-boot-starter</artifactId>
+            <version>${fwmf.module.order.spring.boot.starter.version}</version>
+        </dependency>
         <!--手机框架依赖-->
         <dependency>
             <groupId>cn.faury.fdk</groupId>
@@ -40,45 +71,14 @@
             <version>${fdk.mobile.spring.boot.starter.version}</version>
         </dependency>
         <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-pay-spring-boot-starter</artifactId>
+            <version>${fdk.pay.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
             <groupId>cn.faury.fwmf.module</groupId>
             <artifactId>fwmf-module-system-spring-boot-starter</artifactId>
             <version>${fwmf.module.system.spring.boot.starter.version}</version>
-        </dependency>
-        <!--应用服务依赖-->
-        <dependency>
-            <groupId>cn.faury.fwmf.module</groupId>
-            <artifactId>fwmf-module-area-spring-boot-starter</artifactId>
-            <version>${fwmf.module.area.spring.boot.starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.faury.fwmf.module</groupId>
-            <artifactId>fwmf-module-app-spring-boot-starter</artifactId>
-            <version>${fwmf.module.app.spring.boot.starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.faury.fwmf.module</groupId>
-            <artifactId>fwmf-module-appversion-spring-boot-starter</artifactId>
-            <version>${fwmf.module.appversion.spring.boot.starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.faury.fwmf.module</groupId>
-            <artifactId>fwmf-module-systemconfig-spring-boot-starter</artifactId>
-            <version>${fwmf.module.systemconfig.spring.boot.starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.faury.fwmf.module</groupId>
-            <artifactId>fwmf-module-apptester-spring-boot-starter</artifactId>
-            <version>${fwmf.module.apptester.spring.boot.starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.faury.fwmf.module</groupId>
-            <artifactId>fwmf-module-school-spring-boot-starter</artifactId>
-            <version>${fwmf.module.school.spring.boot.starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.faury.fwmf.module</groupId>
-            <artifactId>fwmf-module-sms-spring-boot-starter</artifactId>
-            <version>${fwmf.module.sms.spring.boot.starter.version}</version>
         </dependency>
 
         <!--springboot基础依赖-->
@@ -103,6 +103,12 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
+        </dependency>
+        <!--支付宝SDK-->
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>3.3.49.ALL</version>
         </dependency>
         <!--日志输出-->
         <dependency>

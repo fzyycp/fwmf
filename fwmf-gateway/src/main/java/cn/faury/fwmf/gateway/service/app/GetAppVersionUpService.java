@@ -6,11 +6,10 @@ import cn.faury.fdk.common.utils.VersionUtil;
 import cn.faury.fdk.mobile.annotation.IMobile;
 import cn.faury.fdk.mobile.annotation.IMobileService;
 import cn.faury.fdk.mobile.exception.IntefaceInvokeException;
-import cn.faury.fwmf.module.api.apptester.bean.AppTesterBean;
-import cn.faury.fwmf.module.api.apptester.service.AppTesterService;
-import cn.faury.fwmf.module.api.bean.AppVersionBean;
-import cn.faury.fwmf.module.api.config.AppOsType;
-import cn.faury.fwmf.module.api.service.AppVersionService;
+import cn.faury.fwmf.module.api.app.bean.AppTesterBean;
+import cn.faury.fwmf.module.api.app.service.AppTesterService;
+import cn.faury.fwmf.module.api.app.bean.AppVersionBean;
+import cn.faury.fwmf.module.api.app.service.AppVersionService;
 import cn.faury.fwmf.module.api.systemconfig.service.SystemConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -102,7 +101,7 @@ public class GetAppVersionUpService implements IMobileService {
                 parm.put("isFormal", StringUtil.whetherYes(bean.getIsFormal()));
                 parm.put("versionNum", bean.getVersionNum());
                 parm.put("size", bean.getSize());
-                if (sysType.equals(AppOsType.IOSCN.getValue()) || sysType.equals(AppOsType.IOSEN.getValue())) {
+                if (sysType.equals(AppVersionBean.AppSysType.IOSCN.getValue()) || sysType.equals(AppVersionBean.AppSysType.IOSEN.getValue())) {
                     parm.put("path", "itms-services://?action=download-manifest&url=" + bean.getPath());
                 } else {
                     parm.put("path", bean.getPath());
