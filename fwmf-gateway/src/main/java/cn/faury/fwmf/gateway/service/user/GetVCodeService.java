@@ -9,7 +9,7 @@ import cn.faury.fwmf.module.api.app.bean.AppInfoBean;
 import cn.faury.fwmf.module.api.app.service.AppInfoService;
 import cn.faury.fwmf.module.api.sms.service.SmsVCodeService;
 import cn.faury.fwmf.module.api.user.bean.UserInfoBean;
-import cn.faury.fwmf.module.api.user.service.UserService;
+import cn.faury.fwmf.module.api.user.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,12 +38,12 @@ public class GetVCodeService implements IMobileService {
      * 用户服务
      */
     @Autowired(required = false)
-    UserService userService;
+    UserInfoService userInfoService;
 
     @Override
     public RestResultEntry execute(HttpServletRequest request) {
         AssertUtil.assertNotNull(smsVCodeService, "短信服务未启用");
-        AssertUtil.assertNotNull(userService, "用户服务未启用");
+        AssertUtil.assertNotNull(userInfoService, "用户服务未启用");
         AssertUtil.assertNotNull(appInfoService, "APP服务未启用");
 
         String mobileNum = request.getParameter("mobileNum");
@@ -52,7 +52,7 @@ public class GetVCodeService implements IMobileService {
         AssertUtil.assertNotEmpty(appCode, "手机APP编码不可以为空");
 
         // 检查手机号是否为已禁用的用户
-        UserInfoBean uib = userService.getUserInfoByLoginName(mobileNum);
+        UserInfoBean uib = userInfoService.getUserInfoByLoginName(mobileNum);
         AssertUtil.assertTrue(uib == null || StringUtil.whetherYes(uib.getIsEnable()), "当前手机号已禁用");
 
         // 检查APP是否存在或启用

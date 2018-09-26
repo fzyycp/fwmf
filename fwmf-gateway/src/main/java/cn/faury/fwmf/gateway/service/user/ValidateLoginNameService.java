@@ -5,11 +5,10 @@ import cn.faury.fdk.common.utils.AssertUtil;
 import cn.faury.fdk.mobile.annotation.IMobile;
 import cn.faury.fdk.mobile.annotation.IMobileService;
 import cn.faury.fdk.mobile.exception.IntefaceInvokeException;
-import cn.faury.fwmf.module.api.user.service.UserService;
+import cn.faury.fwmf.module.api.user.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -20,16 +19,16 @@ import java.util.Collections;
 public class ValidateLoginNameService implements IMobileService {
 
     @Autowired(required = false)
-    private UserService userService;
+    private UserInfoService userInfoService;
 
     @Override
     public RestResultEntry execute(HttpServletRequest httpServletRequest) {
-        AssertUtil.assertNotNull(userService, new IntefaceInvokeException("用户服务未启用"));
+        AssertUtil.assertNotNull(userInfoService, new IntefaceInvokeException("用户服务未启用"));
 
         String loginName = httpServletRequest.getParameter("loginName");
         AssertUtil.assertNotEmpty(loginName, new IntefaceInvokeException("【输入参数错误】用户登录名为空", "用户登录名为空"));
 
-        Boolean isExist = userService.isLoginNameExist(loginName);
+        Boolean isExist = userInfoService.isLoginNameExist(loginName);
         return RestResultEntry.createSuccessResult(Collections.singletonMap("isExist",isExist));
     }
 }

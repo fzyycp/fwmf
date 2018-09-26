@@ -5,14 +5,13 @@ import cn.faury.fdk.common.utils.AssertUtil;
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.mobile.annotation.IMobile;
 import cn.faury.fdk.mobile.annotation.IMobileService;
-import cn.faury.fdk.mobile.exception.IntefaceInvokeException;
 import cn.faury.fwmf.module.api.app.bean.AppInfoBean;
 import cn.faury.fwmf.module.api.app.bean.UserRAppInfoBean;
 import cn.faury.fwmf.module.api.app.service.AppInfoService;
 import cn.faury.fwmf.module.api.app.service.UserRAppInfoService;
 import cn.faury.fwmf.module.api.sms.service.SmsVCodeService;
 import cn.faury.fwmf.module.api.user.config.UserType;
-import cn.faury.fwmf.module.api.user.service.UserService;
+import cn.faury.fwmf.module.api.user.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +29,7 @@ public class MobileRegisterService implements IMobileService {
      * 用户服务
      */
     @Autowired(required = false)
-    UserService userService;
+    UserInfoService userInfoService;
 
     /**
      * 用户关联App服务
@@ -52,7 +51,7 @@ public class MobileRegisterService implements IMobileService {
 
     @Override
     public RestResultEntry execute(HttpServletRequest request) {
-        AssertUtil.assertNotNull(userService, "用户服务未启用");
+        AssertUtil.assertNotNull(userInfoService, "用户服务未启用");
         AssertUtil.assertNotNull(userRAppInfoService, "用户授权APP服务未启用");
         AssertUtil.assertNotNull(smsVCodeService, "短信验证码服务未启用");
         AssertUtil.assertNotNull(appInfoService, "APP服务未启用");
@@ -76,7 +75,7 @@ public class MobileRegisterService implements IMobileService {
 
         AssertUtil.assertTrue(smsVCodeService.validateVCode(uuid, vcode, mobileNum), "短信验证码错误");
 
-        Long userId = userService.insertUserInfo(mobileNum, username, password, appBean.getSystemId(), UserType.ENDUSER, "register", "register");
+        Long userId = userInfoService.insertUserInfo(mobileNum, username, password, appBean.getSystemId(), UserType.ENDUSER, 0L, "register", 0L, "register");
         List<UserRAppInfoBean> userRApps = new ArrayList<>();
         UserRAppInfoBean bean = new UserRAppInfoBean();
         bean.setAppId(appBean.getAppId());

@@ -1,9 +1,5 @@
 package cn.faury.fwmf.gateway.service.payment;
 
-import cn.faury.fwmf.module.api.order.bean.OrderInfoBean;
-import cn.faury.fwmf.module.api.order.service.OrderInfoService;
-import cn.faury.fwmf.module.api.order.bean.WeixinPayRecordsBean;
-import cn.faury.fwmf.module.api.order.service.WeixinPayRecordsService;
 import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.entry.RestResultEntry;
 import cn.faury.fdk.common.exception.TipsException;
@@ -15,6 +11,10 @@ import cn.faury.fdk.mobile.annotation.IMobileService;
 import cn.faury.fdk.mobile.exception.IntefaceInvokeException;
 import cn.faury.fdk.pay.tenpay.WXManager;
 import cn.faury.fdk.shiro.utils.SessionUtil;
+import cn.faury.fwmf.module.api.order.bean.OrderInfoBean;
+import cn.faury.fwmf.module.api.order.bean.WeixinPayRecordsBean;
+import cn.faury.fwmf.module.api.order.service.OrderInfoService;
+import cn.faury.fwmf.module.api.order.service.WeixinPayRecordsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

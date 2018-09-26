@@ -4,13 +4,8 @@ import cn.faury.fdk.common.entry.RestResultEntry;
 import cn.faury.fdk.common.utils.AssertUtil;
 import cn.faury.fdk.mobile.annotation.IMobile;
 import cn.faury.fdk.mobile.annotation.IMobileService;
-import cn.faury.fwmf.module.api.school.bean.SchoolInfoBean;
 import cn.faury.fwmf.module.api.school.bean.SchoolRGradeInfoBean;
-import cn.faury.fwmf.module.api.school.bean.SchoolRGradeRClassInfoBean;
-import cn.faury.fwmf.module.api.school.config.SchoolLevel;
-import cn.faury.fwmf.module.api.school.service.SchoolInfoService;
 import cn.faury.fwmf.module.api.school.service.SchoolRGradeInfoService;
-import cn.faury.fwmf.module.api.school.service.SchoolRGradeRClassInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;

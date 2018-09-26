@@ -7,10 +7,9 @@ import cn.faury.fdk.mobile.annotation.IMobile;
 import cn.faury.fdk.mobile.annotation.IMobileService;
 import cn.faury.fdk.mobile.exception.IntefaceInvokeException;
 import cn.faury.fwmf.module.api.app.bean.AppTesterBean;
-import cn.faury.fwmf.module.api.app.service.AppTesterService;
 import cn.faury.fwmf.module.api.app.bean.AppVersionBean;
+import cn.faury.fwmf.module.api.app.service.AppTesterService;
 import cn.faury.fwmf.module.api.app.service.AppVersionService;
-import cn.faury.fwmf.module.api.systemconfig.service.SystemConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,12 +46,6 @@ public class GetAppVersionUpService implements IMobileService {
     @Autowired(required = false)
     private AppTesterService appTesterservice;
 
-    /**
-     * 系统参数服务
-     */
-    @Autowired
-    private SystemConfigService systemConfigService;
-
     @Override
     public RestResultEntry execute(HttpServletRequest request) {
         if (this.appVersionservice == null) {
@@ -72,7 +65,7 @@ public class GetAppVersionUpService implements IMobileService {
         }
         String userId = request.getParameter("userId");
         Boolean isTester = false;
-        if (StringUtil.isNotEmpty(userId) && !userId.equals(0L)) {
+        if (StringUtil.isNotEmpty(userId) && !userId.equals("0")) {
             Pattern pattern = Pattern.compile("^\\+?[1-9][0-9]*$");
             Matcher isNum = pattern.matcher(userId);
             if (!isNum.matches()) {

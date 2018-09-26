@@ -6,7 +6,7 @@ import cn.faury.fdk.mobile.annotation.IMobile;
 import cn.faury.fdk.mobile.annotation.IMobileService;
 import cn.faury.fwmf.module.api.sms.service.SmsVCodeService;
 import cn.faury.fwmf.module.api.user.bean.UserInfoBean;
-import cn.faury.fwmf.module.api.user.service.UserService;
+import cn.faury.fwmf.module.api.user.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +22,7 @@ public class ResetPasswordService implements IMobileService {
      * 用户服务
      */
     @Autowired(required = false)
-    UserService userService;
+    UserInfoService userInfoService;
 
     /**
      * 短信服务
@@ -32,7 +32,7 @@ public class ResetPasswordService implements IMobileService {
 
     @Override
     public RestResultEntry execute(HttpServletRequest request) {
-        AssertUtil.assertNotNull(userService, "用户服务未启用");
+        AssertUtil.assertNotNull(userInfoService, "用户服务未启用");
         AssertUtil.assertNotNull(smsVCodeService, "短信验证码服务未启用");
 
         String mobileNum = request.getParameter("mobileNum");
@@ -47,10 +47,10 @@ public class ResetPasswordService implements IMobileService {
         AssertUtil.assertTrue(smsVCodeService.validateVCode(uuid, vcode, mobileNum), "短信验证码错误");
 
         // 验证用户是否存在
-        UserInfoBean userInfo = userService.getUserInfoByLoginName(mobileNum);
+        UserInfoBean userInfo = userInfoService.getUserInfoByLoginName(mobileNum);
         AssertUtil.assertNotNull(userInfo, String.format("用户[%s]不存在！", mobileNum));
 
-        int n = userService.resetPassword(userInfo.getUserId(), password, "reset");
+        int n = userInfoService.resetPassword(userInfo.getUserId(), password, 0L, "reset");
         AssertUtil.assertTrue(n > 0, "重置密码失败");
         return RestResultEntry.createSuccessResult(Collections.singletonMap("password", password));
     }
