@@ -11,13 +11,13 @@
 
     <groupId>cn.faury.fwmf</groupId>
     <artifactId>fwmf-gateway</artifactId>
-    <version>0.0.7</version>
+    <version>0.0.8</version>
     <description>移动端接口网关系统</description>
 
     <properties>
         <fdk.mobile.spring.boot.starter.version>0.0.6</fdk.mobile.spring.boot.starter.version>
         <fdk.shiro.repository.mongodb.spring.boot.starter.version>0.0.1</fdk.shiro.repository.mongodb.spring.boot.starter.version>
-        <fdk.pay.spring.boot.starter.version>0.0.3</fdk.pay.spring.boot.starter.version>
+        <fdk.pay.spring.boot.starter.version>0.0.4</fdk.pay.spring.boot.starter.version>
         <fwmf.module.system.spring.boot.starter.version>0.0.1</fwmf.module.system.spring.boot.starter.version>
         <fwmf.module.area.spring.boot.starter.version>0.0.1</fwmf.module.area.spring.boot.starter.version>
         <fwmf.module.app.spring.boot.starter.version>0.1.0</fwmf.module.app.spring.boot.starter.version>
