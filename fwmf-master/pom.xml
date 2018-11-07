@@ -18,7 +18,7 @@
         <fdk.common.version>0.0.9</fdk.common.version>
         <fdk.shiro.repository.mongodb.spring.boot.starter.version>0.0.1</fdk.shiro.repository.mongodb.spring.boot.starter.version>
         <fdk.shiro.spring.boot.starter.version>0.0.1</fdk.shiro.spring.boot.starter.version>
-        <fwmf.module.user.role.spring.boot.starter.version>0.0.1</fwmf.module.user.role.spring.boot.starter.version>
+        <fwmf.module.user.role.spring.boot.starter.version>0.0.4</fwmf.module.user.role.spring.boot.starter.version>
         <fwmf.module.system.spring.boot.starter.version>0.0.1</fwmf.module.system.spring.boot.starter.version>
         <fwmf.module.system.web.version>0.0.1</fwmf.module.system.web.version>
         <fwmf.module.menu.spring.boot.starter.version>0.0.1</fwmf.module.menu.spring.boot.starter.version>

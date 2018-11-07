@@ -11,11 +11,11 @@
 
     <groupId>cn.faury.fwmf</groupId>
     <artifactId>fwmf-gateway</artifactId>
-    <version>0.0.8</version>
+    <version>0.1.0</version>
     <description>移动端接口网关系统</description>
 
     <properties>
-        <fdk.mobile.spring.boot.starter.version>0.0.6</fdk.mobile.spring.boot.starter.version>
+        <fdk.mobile.spring.boot.starter.version>0.0.8</fdk.mobile.spring.boot.starter.version>
         <fdk.shiro.repository.mongodb.spring.boot.starter.version>0.0.1</fdk.shiro.repository.mongodb.spring.boot.starter.version>
         <fdk.pay.spring.boot.starter.version>0.0.4</fdk.pay.spring.boot.starter.version>
         <fwmf.module.system.spring.boot.starter.version>0.0.1</fwmf.module.system.spring.boot.starter.version>
@@ -24,7 +24,7 @@
         <fwmf.module.systemconfig.spring.boot.starter.version>0.0.1</fwmf.module.systemconfig.spring.boot.starter.version>
         <fwmf.module.school.spring.boot.starter.version>0.0.1</fwmf.module.school.spring.boot.starter.version>
         <fwmf.module.sms.spring.boot.starter.version>0.0.1</fwmf.module.sms.spring.boot.starter.version>
-        <fwmf.module.order.spring.boot.starter.version>0.0.3</fwmf.module.order.spring.boot.starter.version>
+        <fwmf.module.order.spring.boot.starter.version>0.0.4</fwmf.module.order.spring.boot.starter.version>
     </properties>
 
     <dependencies>
@@ -121,12 +121,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>bintray-faury-fwmf</id>
-            <name>faury-fwmf</name>
-            <url>https://api.bintray.com/maven/faury/fwmf/fwmf-gateway/;publish=1</url>
-        </repository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>bintray-faury-fwmf</id>-->
+            <!--<name>faury-fwmf</name>-->
+            <!--<url>https://api.bintray.com/maven/faury/fwmf/fwmf-gateway/;publish=1</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 
 </project>

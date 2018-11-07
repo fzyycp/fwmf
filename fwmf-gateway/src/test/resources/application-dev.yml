@@ -16,29 +16,14 @@ fdk:
       nounionid:
 #        weixinmp: ""
     filter: # 不拦截登录验证地址
-      anon: /api/*,/web/*
+      anon: /v2/api-docs/**,/swagger-resources/**,/webjars/springfox-swagger-ui/**,/swagger-ui.html,/health
+    service:
+      mode: DEV
+      auth: true
+#      incompatible:
+#        getUserInfo: "1.5,2.5,0.0"
+#        getUserInfo: "[obsolete]"
   shiro:
-    saCode: "fwmf-gateway"
-    session-timeout: 86400000
-    filter:
-#登录、登录成功页为系统默认URL，相同时不出现302跳转
-#      login-url: "/login"
-#      success-url: "/login"
-#      unauthorized-url: "/login"
-      chain:
-#登录、退出、验证码为系统默认，如果修改了上面的filter则在此处重新配置
-#       - "captcha,login:/login"
-#       - "logout:/logout"
-#       - "anon:/captcha.jpg"
-       - "anon:/api/**"
-       - "anon:/static/**"
-       - "anon:/html/**"
-       - "anon:/v2/api-docs/**"
-       - "anon:/swagger-resources/**"
-       - "anon:/webjars/springfox-swagger-ui/**"
-       - "anon:/swagger-ui.html"
-       - "anon:/health"
-       - "authc:/**"
 #shiro的存储仓库MongoDB配置
     repository:
       mongodb:
@@ -79,8 +64,9 @@ jasypt:
 #mybatis
 #entity扫描的包名
 mybatis:
-  type-aliases-package: cn.faury
-  mapper-locations: classpath*:/mybaits/*Mapper.xml  #Mapper.xml所在的位置
+  mapper-locations: classpath*:/mybaits/*Mapper.xml #Mapper.xml所在的位置
+  configuration:
+    map-underscore-to-camel-case: true
 
 #pagehelper分页插件配置
 pagehelper:
