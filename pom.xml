@@ -29,11 +29,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <repositories>
-        <!-- 253私服 -->
+        <!-- TSK私服 -->
         <repository>
-            <id>releases</id>
-            <name>253 Repository</name>
-            <url>http://mvn.fanyc.cn/nexus/content/repositories/releases/</url>
+            <id>maven-releases</id>
+            <name>TSK Repository</name>
+            <url>http://mvn.fanyc.cn/repository/maven-releases</url>
         </repository>
         <!-- fdk私服 -->
         <repository>
@@ -55,6 +55,12 @@
         </repository>
     </repositories>
     <pluginRepositories>
+        <!-- TSK私服 -->
+        <pluginRepository>
+            <id>maven-releases</id>
+            <name>TSK Repository</name>
+            <url>http://mvn.fanyc.cn/repository/maven-releases</url>
+        </pluginRepository>
         <!-- fdk私服 -->
         <pluginRepository>
             <id>fdk</id>
@@ -112,9 +118,13 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>releases</id>
-            <url>http://128.0.9.253:8081/nexus/content/repositories/releases/</url>
+            <id>maven-releases</id>
+            <url>http://mvn.fanyc.cn/repository/maven-releases</url>
         </repository>
+        <!--<repository>-->
+            <!--<id>releases</id>-->
+            <!--<url>http://128.0.9.253:8081/nexus/content/repositories/releases/</url>-->
+        <!--</repository>-->
     </distributionManagement>
     <!--<distributionManagement>-->
         <!--<repository>-->
