@@ -84,7 +84,7 @@ public class GetAliPayOrderInfoStrService implements IMobileService {
 
         log.debug("{}","========获取支付参数=========userId=" + userId + "===orderId=" + orderId + "==receiveSrc==" + receiveSrc
                 + "===totalfee=" + orderInfoBean.getOrderPayPrice());
-        AlipayRecordsBean alipayRecordsBean = this.createAlipayRecord(orderId, orderInfoBean.getOrderPayPrice(), receiveSrc);
+        AlipayRecordsBean alipayRecordsBean = this.createAlipayRecord(orderInfoBean, receiveSrc);
 
         //实例化客户端
         AlipayClient alipayClient = new DefaultAlipayClient("https://openapi.alipay.com/gateway.do"
@@ -113,17 +113,18 @@ public class GetAliPayOrderInfoStrService implements IMobileService {
         throw new TipsException(RestResultCode.CODE500.getTips(),"获取支付宝支付请求参数失败");
     }
 
-    private AlipayRecordsBean createAlipayRecord(String orderId, BigDecimal totalfee, String receiveSrc) {
+    private AlipayRecordsBean createAlipayRecord(OrderInfoBean orderInfoBean, String receiveSrc) {
         AlipayRecordsBean alipayRecordsBean = new AlipayRecordsBean();
         String outTradeNo = String.format("%s%s", DateUtil.getCurrentDateStr("yyyyMMddHHmmss"), RandomUtil.getRandomNumber(6));
         alipayRecordsBean.setOutTradeNo(outTradeNo);
-        String subject = String.format("[%s]在[%s]请求支付宝支付订单 ", SessionUtil.getCurrentLoginName(), DateUtil.getCurrentDateTimeStr());
-        String body = String.format("订单编号：%s；订单名称：%s；订单金额：%s；订单ID：%s；来源：%s ", outTradeNo, subject, totalfee,
-                orderId, getReceiveSrcInfo(receiveSrc));
+//        String subject = String.format("[%s]在[%s]请求支付宝支付订单 ", SessionUtil.getCurrentLoginName(), DateUtil.getCurrentDateTimeStr());
+//        String body = String.format("订单编号：%s；订单名称：%s；订单金额：%s；订单ID：%s；来源：%s ", outTradeNo, subject, orderInfoBean.getOrderPayPrice(),
+//                orderInfoBean.getOrderId(), getReceiveSrcInfo(receiveSrc));
+        String subject = String.format("支付宝支付订单[%s]", orderInfoBean.getOrderCode());
         alipayRecordsBean.setSubject(subject);
-        alipayRecordsBean.setTotalfee(totalfee);
-        alipayRecordsBean.setOrderId(Long.parseLong(orderId));
-        alipayRecordsBean.setBody(body);
+        alipayRecordsBean.setTotalfee(orderInfoBean.getOrderPayPrice());
+        alipayRecordsBean.setOrderId(orderInfoBean.getOrderId());
+        alipayRecordsBean.setBody(subject);
         alipayRecordsBean.setUserId(SessionUtil.getCurrentUserId());
         alipayRecordsBean.setUserName(SessionUtil.getCurrentLoginName());
         alipayRecordsBean.setCreateTime(DateUtil.getCurrentDate());

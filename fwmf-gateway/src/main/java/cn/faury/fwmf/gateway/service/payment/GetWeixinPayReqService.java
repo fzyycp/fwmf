@@ -84,7 +84,7 @@ public class GetWeixinPayReqService implements IMobileService {
         logger.debug("========获取支付参数=========userId=" + userId + "===orderId=" + orderId + "==receiveSrc==" + receiveSrc
                 + "===totalfee=" + orderInfoBean.getOrderPayPrice());
         // 获取微信支付参数
-        WeixinPayRecordsBean weixinPayRecordsBean = this.createWeixinPayRecord(orderId, orderInfoBean.getOrderPayPrice(), receiveSrc);
+        WeixinPayRecordsBean weixinPayRecordsBean = this.createWeixinPayRecord(orderInfoBean, receiveSrc);
 
         // 统一下单
         Map<String, String> result = WXManager.unifiedorderForApp(weixinPayRecordsBean.getOutTradeNo(), orderInfoBean.getOrderPayPrice().doubleValue(), weixinPayRecordsBean.getBody());
@@ -99,16 +99,15 @@ public class GetWeixinPayReqService implements IMobileService {
         return RestResultEntry.createSuccessResult(payReq);
     }
 
-    private WeixinPayRecordsBean createWeixinPayRecord(String orderId, BigDecimal totalfee, String receiveSrc) {
+    private WeixinPayRecordsBean createWeixinPayRecord(OrderInfoBean orderInfoBean, String receiveSrc) {
         WeixinPayRecordsBean weixinPayRecordsBean = new WeixinPayRecordsBean();
         String outTradeNo = String.format("%s%s", DateUtil.getCurrentDateStr("yyyyMMddHHmmss"), RandomUtil.getRandomNumber(6));
         weixinPayRecordsBean.setOutTradeNo(outTradeNo);
-        String subject = String.format("[%s]在[%s]请求微信支付订单 ", SessionUtil.getCurrentLoginName(), DateUtil.getCurrentDateTimeStr());
-        String body = "支付购库商品";
+        String subject = String.format("微信支付订单[%s]", orderInfoBean.getOrderCode());
         weixinPayRecordsBean.setSubject(subject);
-        weixinPayRecordsBean.setTotalfee(totalfee);
-        weixinPayRecordsBean.setOrderId(Long.parseLong(orderId));
-        weixinPayRecordsBean.setBody(body);
+        weixinPayRecordsBean.setTotalfee(orderInfoBean.getOrderPayPrice());
+        weixinPayRecordsBean.setOrderId(orderInfoBean.getOrderId());
+        weixinPayRecordsBean.setBody(subject);
         weixinPayRecordsBean.setUserId(SessionUtil.getCurrentUserId());
         weixinPayRecordsBean.setUserName(SessionUtil.getCurrentLoginName());
         weixinPayRecordsBean.setCreateTime(DateUtil.getCurrentDate());

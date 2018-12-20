@@ -11,20 +11,20 @@
 
     <groupId>cn.faury.fwmf</groupId>
     <artifactId>fwmf-gateway</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <description>移动端接口网关系统</description>
 
     <properties>
         <fdk.mobile.spring.boot.starter.version>0.0.8</fdk.mobile.spring.boot.starter.version>
         <fdk.shiro.repository.mongodb.spring.boot.starter.version>0.0.2</fdk.shiro.repository.mongodb.spring.boot.starter.version>
-        <fdk.pay.spring.boot.starter.version>0.0.4</fdk.pay.spring.boot.starter.version>
+        <fdk.pay.spring.boot.starter.version>0.0.6</fdk.pay.spring.boot.starter.version>
         <fwmf.module.system.spring.boot.starter.version>0.0.1</fwmf.module.system.spring.boot.starter.version>
         <fwmf.module.area.spring.boot.starter.version>0.0.1</fwmf.module.area.spring.boot.starter.version>
         <fwmf.module.app.spring.boot.starter.version>0.1.1</fwmf.module.app.spring.boot.starter.version>
         <fwmf.module.systemconfig.spring.boot.starter.version>0.0.1</fwmf.module.systemconfig.spring.boot.starter.version>
         <fwmf.module.school.spring.boot.starter.version>0.0.1</fwmf.module.school.spring.boot.starter.version>
         <fwmf.module.sms.spring.boot.starter.version>0.0.1</fwmf.module.sms.spring.boot.starter.version>
-        <fwmf.module.order.spring.boot.starter.version>0.0.5</fwmf.module.order.spring.boot.starter.version>
+        <fwmf.module.order.spring.boot.starter.version>0.0.9</fwmf.module.order.spring.boot.starter.version>
     </properties>
 
     <dependencies>
